@@ -29,7 +29,8 @@
 Add a detailed introduction about the project here, everything you want the reader to know.
 
 ## Notes
-![image](https://github.com/The-Awesome-Five/giphy-project/assets/73138116/c7840738-a79d-4e2b-9c1b-20f3f5a00178)
+![image](https://github.com/The-Awesome-Five/giphy-project/assets/73138116/0135f16a-7951-417c-bf07-1def0a28b651)
+
 
 
 ### Installation
