@@ -29,8 +29,15 @@
 Add a detailed introduction about the project here, everything you want the reader to know.
 
 ## Notes
+
+### Main Page
 ![image](https://github.com/The-Awesome-Five/giphy-project/assets/73138116/0135f16a-7951-417c-bf07-1def0a28b651)
 
+### Detailed Gif Page
+![image](https://github.com/The-Awesome-Five/giphy-project/assets/73138116/e6457976-5da4-4757-9213-7d89e428297c)
+
+### Upload Gif Page
+![image](https://github.com/The-Awesome-Five/giphy-project/assets/73138116/87b535c4-5716-4bac-8ae3-b5fae3d18ef3)
 
 
 ### Installation
