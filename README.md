@@ -28,8 +28,9 @@
 ## About
 Add a detailed introduction about the project here, everything you want the reader to know.
 
-## Usage
-Write about how to use this project.
+## Notes
+![image](https://github.com/The-Awesome-Five/giphy-project/assets/73138116/c7840738-a79d-4e2b-9c1b-20f3f5a00178)
+
 
 ### Installation
 - Steps on how to install this project, to use it.
