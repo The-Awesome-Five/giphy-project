@@ -36,6 +36,8 @@ Add a detailed introduction about the project here, everything you want the read
 ### Detailed Gif Page
 ![image](https://github.com/The-Awesome-Five/giphy-project/assets/73138116/e6457976-5da4-4757-9213-7d89e428297c)
 
+### Upload Gif Page
+![image](https://github.com/The-Awesome-Five/giphy-project/assets/73138116/87b535c4-5716-4bac-8ae3-b5fae3d18ef3)
 
 
 ### Installation
