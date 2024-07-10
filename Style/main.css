@@ -1,4 +1,4 @@
-body {
+html, body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -6,6 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 #app {
@@ -18,7 +19,7 @@ body {
 
 header {
     grid-column: span 2;
-    background-color: lightgrey;
+    font-size: 2rem;
     padding: 10px;
     text-align: center;
 }
@@ -65,6 +66,12 @@ header {
 
 #container {
     display: grid;
-    grid-template-columns: 120px 4rf;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    align-items: start;
 }
 
+#gif {
+    width: 251px;
+    overflow: hidden;
+}
