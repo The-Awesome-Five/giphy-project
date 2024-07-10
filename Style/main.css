@@ -44,14 +44,6 @@ header {
     font-size: 16px;
 }
 
-#container {
-    grid-column: 2 / 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
 .nav-link {
     display: block;
     color: black;
@@ -65,13 +57,17 @@ header {
 }
 
 #container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 1rem;
-    align-items: start;
+    position: relative;
+    width: 1040px;
+    height: 1673px;
+    margin: 1.5rem;
+
 }
 
 #gif {
     width: 251px;
+    height: 251px;
     overflow: hidden;
+    border-radius: 4px;
+    transform: translate3d(0px, 0px, 0);
 }
