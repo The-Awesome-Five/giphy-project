@@ -11,5 +11,5 @@ export const toGifCategorieView = async (data) => {
   };
   
   export const toGif = async (data) => {
-    return data.image.original.url;
+    return await data.image.original.url;
   };
