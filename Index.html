@@ -10,20 +10,21 @@
 </head>
 <body>
   <div id="app">
-    <header></header>
-    <nav>
-      <a href="#" class="nav-link" data-page="home">Home</a> |
-      <a href="#" class="nav-link" data-page="categories">Categories</a> |
+    <header>Header</header>
+    <nav class="hamburger-menu" id='hamburgerMenu'>
+      <a href="#" class="nav-link">
+        <img src="img/icon-ham-menu.png" height="50">
+      </a>
+      <a href="#" class="nav-link" data-page="upload">Upload</a>
       <a href="#" class="nav-link" data-page="favorites">Favorites</a>
-      <input id="search" type="text" placeholder="Search">
-      <a href="#" class="nav-link" data-page="about">About</a>
+      
     </nav>
-    <div id="container">
-      <!-- start placeholders -->
-       <img src="https://media4.giphy.com/media/mISraWowfVmt5Pshtz/giphy.gif?cid=d7aa89a6gdr7dch1sfkbb2vqtyq8u7clgf5g5a1zi6tvvpey&ep=v1_gifs_trending&rid=giphy.gif&ct=g">
-      <!-- end placeholders -->
+    <div class="search-bar" id="searchBar">
+      <input id="search" type="text" placeholder="Search">
     </div>
-    <footer>Mov(e)ster</footer>
+    <div id="container">
+      <img src="https://media4.giphy.com/media/mISraWowfVmt5Pshtz/giphy.gif?cid=d7aa89a6gdr7dch1sfkbb2vqtyq8u7clgf5g5a1zi6tvvpey&ep=v1_gifs_trending&rid=giphy.gif&ct=g" alt="Gif">
+    </div>
   </div>
 
   <!-- app -->
