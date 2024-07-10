@@ -63,3 +63,8 @@ header {
     background-color: lightcoral;
 }
 
+#container {
+    display: grid;
+    grid-template-columns: 120px 4rf;
+}
+
