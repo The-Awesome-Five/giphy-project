@@ -1,5 +1,9 @@
-import {searchGif} from "./requests/giphy-service.js";
+import {getGifCategories, getTrendingGifs, searchGif} from "./requests/giphy-service.js";
 
-const message = await searchGif('happy birthday')
+const message = await searchGif('happy birthday');
 
-console.log(message);
+const trendingGifs = await getTrendingGifs();
+
+const gifCategories = await getGifCategories();
+
+console.log(trendingGifs);
