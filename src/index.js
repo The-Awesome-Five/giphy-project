@@ -3,7 +3,7 @@ import { toAboutView } from "./views/view-about.js";
 import { loadPage } from "./events/Nav-events.js";
 import { ABOUT, FAVORITE, UPLOAD, GIFS } from "./common/constants.js";
 import { setActiveNav } from "./events/Nav-events.js";
-import {handleUpload} from "./events/giphy-events.js";
+import {handleUpload, handleUploadEvent} from "./events/giphy-events.js";
 // const message = await searchGif('happy birthday');
 
 // const trendingGifs = await getTrendingGifs();
@@ -15,30 +15,14 @@ import {handleUpload} from "./events/giphy-events.js";
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    document.addEventListener('submit', async event => {
+    document.addEventListener('submit', event => {
 
         event.preventDefault();
 
         if (event.target.classList.contains('upload')) {
-            const fileInput = document.getElementById('gif-upload');
-            const file = fileInput.files[0];
-            if (file) {
-                try {
-                    const status = await handleUpload(file);
-
-                    if (status === 200) {
-                        alert('File Uploaded Successfully!')
-                    }
-                } catch(e) {
-                    console.log(e.message)
-                }
-            } else {
-                document.getElementById('upload-status').innerText = 'Please select a file to upload.';
-            }
+           handleUploadEvent(event);
         }
     })
-
-
 
         document.addEventListener('click', event => {
 
