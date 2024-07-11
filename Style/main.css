@@ -9,7 +9,11 @@ html, body {
     justify-content: center;
     align-items: center;
     background-color: rgb(78, 78, 78);
-    
+
+}
+
+.active {
+
 }
 
 #container {
@@ -33,13 +37,13 @@ header {
 
 .hamburger-menu {
     grid-row: span 3;
-    background-color: lightblue; 
+    background-color: lightblue;
     padding: 5px;
 }
 
 .search-bar {
     display: grid;
-    background-color: lightgreen; 
+    background-color: lightgreen;
     padding: 10px;
     display: flex;
     flex-direction: column;

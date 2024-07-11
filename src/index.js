@@ -1,5 +1,5 @@
 
-import {loadPage, renderHome, renderSportCat, renderWowCat, renderLolCat, renderJsCat, renderCatsCat} from "./events/nav-events.js";
+import {loadPage, renderHome} from "./events/nav-events.js";
 import {handleUploadEvent} from "./events/giphy-events.js";
 import {renderSearchGifs} from "./events/search-event.js";
 import { renderDetailedView } from "./events/detailed-even.js";
@@ -41,25 +41,30 @@ document.addEventListener('DOMContentLoaded', () => {
             loadPage(event.target.getAttribute('data-page'));
         }
 
-        if (event.target.id === 'sport-btn') {
-            renderSportCat();
-          }
+        // nav-cats
+        if (event.target.id.includes('nav')) {
+            renderSearchGifs(event.target.id.slice(4))
+        }
 
-          if (event.target.id === 'wow-btn') {
-            renderWowCat();
-          }
-
-          if (event.target.id === 'lol-btn') {
-            renderLolCat();
-          }
-
-          if (event.target.id === 'js-btn') {
-            renderJsCat();
-          }
-
-          if (event.target.id === 'cats-btn') {
-            renderCatsCat();
-          }
+        // if (event.target.id === 'sport-btn') {
+        //     renderSportCat();
+        //   }
+        //
+        //   if (event.target.id === 'wow-btn') {
+        //     renderWowCat();
+        //   }
+        //
+        //   if (event.target.id === 'lol-btn') {
+        //     renderLolCat();
+        //   }
+        //
+        //   if (event.target.id === 'js-btn') {
+        //     renderJsCat();
+        //   }
+        //
+        //   if (event.target.id === 'cats-btn') {
+        //     renderCatsCat();
+        //   }
 
         if (event.target.classList.contains('test')) {
             const imgSrc = event.target.src;

@@ -1,7 +1,8 @@
-export const toGifCategorieView = async (data, name = 'Trending') => {
+export const toGifCategorieView = async (data, name = 'Trending', isLocalStorage = false) => {
   let counter = 0;
   let cols = [[], [], []];
-  const gifUrls = await Promise.all(data.map(el => toGif(el)));
+
+  const gifUrls = await Promise.all(data.map(el => isLocalStorage ? `https://media.giphy.com/media/${el}/giphy.gif` : toGif(el)));
 
   gifUrls.forEach((url, index) => {
     const gifElement = `<div class="gif"><img class='test' src="${url}" alt="Gif"></div>`;
