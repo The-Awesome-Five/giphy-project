@@ -1,11 +1,7 @@
-import {toAboutView} from "./views/view-about.js";
-import {loadPage, renderHome} from "./events/nav-events.js";
-import {ABOUT, FAVORITE, UPLOAD, GIFS} from "./common/constants.js";
-import {setActiveNav} from "./events/nav-events.js";
+
+import {loadPage, renderHome, renderSportCat, renderWowCat, renderLolCat, renderJsCat, renderCatsCat} from "./events/nav-events.js";
 import {handleUploadEvent} from "./events/giphy-events.js";
 import {renderSearchGifs} from "./events/search-event.js";
-import { getGIfById } from "./requests/giphy-service.js";
-import { toDetailedView } from "./views/detailed-view.js";
 import { renderDetailedView } from "./events/detailed-even.js";
 // const message = await searchGif('happy birthday');
 
@@ -44,6 +40,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
             loadPage(event.target.getAttribute('data-page'));
         }
+
+        if (event.target.id === 'sport-btn') {
+            renderSportCat();
+          }
+
+          if (event.target.id === 'wow-btn') {
+            renderWowCat();
+          }
+
+          if (event.target.id === 'lol-btn') {
+            renderLolCat();
+          }
+
+          if (event.target.id === 'js-btn') {
+            renderJsCat();
+          }
+
+          if (event.target.id === 'cats-btn') {
+            renderCatsCat();
+          }
 
         if (event.target.classList.contains('test')) {
             const imgSrc = event.target.src;
