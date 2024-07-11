@@ -7,9 +7,9 @@ import { getTrendingGifs } from "../requests/giphy-service.js";
 
 
 export const loadPage = (page = '') => {
- 
+
     switch (page) {
-   
+
       case GIFS:
         setActiveNav(GIFS);
         return renderHome();
@@ -22,11 +22,11 @@ export const loadPage = (page = '') => {
       case ABOUT:
         setActiveNav(ABOUT);
         return renderAbout();
-   
+
       /* if the app supports error logging, use default to log mapping errors */
       default: return null;
     }
-   
+
 };
 
 export const renderUpload = () => {
@@ -37,14 +37,14 @@ export const renderAbout = () => {
   document.querySelector(CONTAINER_SELECTOR).innerHTML = toAboutView();
 };
 
-const renderHome = async ()=> {
+export const renderHome = async ()=> {
 const gifs= await getTrendingGifs()
 document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs.data, 'trending');
 }
 
  export  const setActiveNav = (page) => {
     const navs = document.querySelectorAll('a.nav-link');
-  
+
     Array
       .from(navs)
       .forEach(element => element

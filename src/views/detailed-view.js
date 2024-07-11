@@ -1,9 +1,5 @@
 
 export const toDetailedView =  (info, views) => {
-
-  
-
-  
     return `
      
           <img id="gif" src=${info.images.original.url} alt="Gif">

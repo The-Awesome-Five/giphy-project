@@ -1,5 +1,5 @@
 import {toAboutView} from "./views/view-about.js";
-import {loadPage} from "./events/nav-events.js";
+import {loadPage, renderHome} from "./events/nav-events.js";
 import {ABOUT, FAVORITE, UPLOAD, GIFS} from "./common/constants.js";
 import {setActiveNav} from "./events/nav-events.js";
 import {handleUploadEvent} from "./events/giphy-events.js";
@@ -17,6 +17,7 @@ import { renderDetailedView } from "./events/detailed-even.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    renderHome();
 
     document.addEventListener('submit', event => {
 
