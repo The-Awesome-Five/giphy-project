@@ -4,6 +4,9 @@ import {ABOUT, FAVORITE, UPLOAD, GIFS} from "./common/constants.js";
 import {setActiveNav} from "./events/nav-events.js";
 import {handleUploadEvent} from "./events/giphy-events.js";
 import {renderSearchGifs} from "./events/search-event.js";
+import { getGIfById } from "./requests/giphy-service.js";
+import { toDetailedView } from "./views/detailed-view.js";
+import { renderDetailedView } from "./events/detailed-even.js";
 // const message = await searchGif('happy birthday');
 
 // const trendingGifs = await getTrendingGifs();
@@ -41,23 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
             loadPage(event.target.getAttribute('data-page'));
         }
 
-
-        if (event.target.classList.contains('button-category')) {
-            renderCategory(+event.target.getAttribute('category-id'));
+        if (event.target.classList.contains('test')) {
+            const imgSrc = event.target.src;
+            const imgSrcParts = imgSrc.split('/');
+            console.log(imgSrcParts);
+            event.preventDefault();
+            renderDetailedView(imgSrcParts[imgSrcParts.length - 2]);
         }
-
-
-        if (event.target.classList.contains('about')) {
-            renderMovieDetails(+event.target.getAttribute('movie-id'));
-        }
-
-        // toggle favorite event
-        if (event.target.classList.contains('favorite')) {
-            toggleFavoriteStatus(+event.target.getAttribute('data-movie-id'));
-        }
+    });
 
     });
 
 
-});
+
 

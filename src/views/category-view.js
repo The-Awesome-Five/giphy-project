@@ -4,7 +4,7 @@ export const toGifCategorieView = async (data, name = 'Trending') => {
   const gifUrls = await Promise.all(data.map(el => toGif(el)));
 
   gifUrls.forEach((url, index) => {
-    const gifElement = `<div class="gif"><img src="${url}" alt="Gif"></div>`;
+    const gifElement = `<div class="gif"><img class='test' src="${url}" alt="Gif"></div>`;
     cols[counter].push(gifElement);
     counter = (counter + 1) % 3;
   });
