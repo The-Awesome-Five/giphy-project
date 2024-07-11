@@ -69,9 +69,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target.classList.contains('test')) {
             const imgSrc = event.target.src;
             const imgSrcParts = imgSrc.split('/');
-            console.log(imgSrcParts);
+        
             event.preventDefault();
             renderDetailedView(imgSrcParts[imgSrcParts.length - 2]);
+        }
+
+        if (event.target.id.includes('favorite')) {
+            let favorite = JSON.parse(localStorage.getItem('Favorite')) || [];
+            const imgElement = event.target.closest('div').querySelector('img');
+            const imgSrc = imgElement.src;
+            const imgSrcParts = imgSrc.split('/');
+            favorite.push(imgSrcParts[imgSrcParts.length - 2]);
+            localStorage.setItem('Favorite', JSON.stringify(favorite));
+            
         }
     });
 

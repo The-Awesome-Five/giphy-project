@@ -9,7 +9,11 @@ export const toDetailedView =  (info, views) => {
           <h2> Views: ${views}</h2>
            ${'\n'}
           <h2> Upload Date: ${info.import_datetime}</h2>
+
+            <button id='favorite'>Add to Favorite</button>
+            <button id='getURL">Get URL</button>
         </div>
       </div>
     `;
   };
+
