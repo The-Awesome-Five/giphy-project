@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', event => {
 
-        if (event.key === "Enter") {
+        if (event.target.classList.contains('search') && event.key === "Enter") {
             event.preventDefault();
             renderSearchGifs(event.target.value);
         }
