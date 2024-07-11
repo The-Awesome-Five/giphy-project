@@ -1,6 +1,7 @@
 import { ABOUT, FAVORITE, UPLOAD, GIFS, CONTAINER_SELECTOR } from "../common/constants.js";
 import { toAboutView } from "../views/view-about.js";
 import { toGifCategorieView } from "../views/category-view.js";
+import { toUploadView } from "../views/upload-view.js";
 
 import { getTrendingGifs } from "../requests/giphy-service.js";
 
@@ -17,7 +18,7 @@ export const loadPage = (page = '') => {
         return renderCategories();
       case UPLOAD:
         setActiveNav(UPLOAD);
-        return renderFavorites();
+        return renderUpload();
       case ABOUT:
         setActiveNav(ABOUT);
         return renderAbout();
@@ -26,11 +27,15 @@ export const loadPage = (page = '') => {
       default: return null;
     }
    
-  };
+};
 
- export const renderAbout = () => {
-    document.querySelector(CONTAINER_SELECTOR).innerHTML = toAboutView();
-  };
+export const renderUpload = () => {
+  document.querySelector(CONTAINER_SELECTOR).innerHTML = toUploadView()
+}
+
+export const renderAbout = () => {
+  document.querySelector(CONTAINER_SELECTOR).innerHTML = toAboutView();
+};
 
 const renderHome = async ()=> {
 const gifs= await getTrendingGifs()
