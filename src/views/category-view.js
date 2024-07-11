@@ -1,4 +1,4 @@
-export const toGifCategorieView = async (data, name) => {
+export const toGifCategorieView = async (data, name = 'Trending') => {
   let counter = 0;
   let cols = [[], [], []];
   const gifUrls = await Promise.all(data.map(el => toGif(el)));
