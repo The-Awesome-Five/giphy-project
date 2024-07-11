@@ -12,6 +12,10 @@ html, body {
     
 }
 
+#container {
+    width: 771px;
+}
+
 #app {
     display: grid;
     grid-template-columns: 100px 1fr;
