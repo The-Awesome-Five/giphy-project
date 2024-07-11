@@ -1,3 +1,5 @@
+
+
 html, body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -6,12 +8,13 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(78, 78, 78);
     
 }
 
 #app {
     display: grid;
-    grid-template-columns: 100px 4fr;
+    grid-template-columns: 100px 1fr;
     grid-template-rows: auto auto 1fr;
     height: 100vh;
     width: 100%;
@@ -31,17 +34,24 @@ header {
 }
 
 .search-bar {
-    grid-column: 2 / 3;
+    display: grid;
     background-color: lightgreen; 
     padding: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
 .search-bar input {
     width: 100%;
     padding: 10px;
     font-size: 16px;
+}
+
+#search {
+    border-radius: 8px;
+    max-width: 700px;
 }
 
 .nav-link {
@@ -56,18 +66,30 @@ header {
     background-color: lightcoral;
 }
 
-#container {
-    position: relative;
-    width: 1040px;
-    height: 1673px;
-    margin: 1.5rem;
-
+.gif-gallery {
+    display: flex;
+    gap: 5px;
+    margin: 4px 4px 0 4px ;
 }
 
-#gif {
+/* .col {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+} */
+
+.gif img {
     width: 251px;
-    height: 251px;
-    overflow: hidden;
-    border-radius: 4px;
-    transform: translate3d(0px, 0px, 0);
+    height: auto;
+    border-radius: 1rem;
+    margin-bottom: 0px;
+}
+
+.categories {
+    border-bottom: 1px solid black;
+    padding: 0 10px 5px 10px;
+}
+
+.categories > button {
+    font-size: 17px;
 }
