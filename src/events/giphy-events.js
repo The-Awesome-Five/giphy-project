@@ -24,13 +24,12 @@ export const handleUploadEvent = async (event) => {
 
             if (response.meta.status === 200) {
                 alert('File Uploaded Successfully!');
-                addUploadedGif(response.data.id)
-
+                addUploadedGif(response.data.id);
             }
         } catch(e) {
             console.log(e.message)
         }
     } else {
-        document.getElementById('upload-status').innerText = 'Please select a file to upload.';
+        form.querySelector('#gif-upload').innerText = 'Please select a file to upload.';
     }
 }
