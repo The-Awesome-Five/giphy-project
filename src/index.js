@@ -3,7 +3,7 @@ import { toAboutView } from "./views/view-about.js";
 import { loadPage } from "./events/Nav-events.js";
 import { ABOUT, FAVORITE, UPLOAD, GIFS } from "./common/constants.js";
 import { setActiveNav } from "./events/Nav-events.js";
-import {handleUpload, handleUploadEvent} from "./events/giphy-events.js";
+import { handleUploadEvent} from "./events/giphy-events.js";
 // const message = await searchGif('happy birthday');
 
 // const trendingGifs = await getTrendingGifs();

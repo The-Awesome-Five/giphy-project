@@ -1,14 +1,13 @@
 import {uploadGif} from "../requests/giphy-service.js";
+import {addUploadedGif} from "../data/uploaded-gifs.js";
 
-export const handleUpload = async (file) => {
+const handleUpload = async (file) => {
 
     const body = new FormData();
 
     body.append('file', file);
 
-    const response = await uploadGif(body);
-
-    return response.meta.status;
+    return await uploadGif(body);
 }
 
 export const handleUploadEvent = async (event) => {
@@ -19,10 +18,12 @@ export const handleUploadEvent = async (event) => {
     const file = fileInput.files[0];
     if (file) {
         try {
-            const status = await handleUpload(file);
+            const response = await handleUpload(file);
 
-            if (status === 200) {
-                alert('File Uploaded Successfully!')
+            if (response.meta.status === 200) {
+                alert('File Uploaded Successfully!');
+                addUploadedGif(response.data.id)
+
             }
         } catch(e) {
             console.log(e.message)
