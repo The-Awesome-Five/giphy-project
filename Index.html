@@ -6,11 +6,15 @@
   <title>Mov(e)ster</title>
   <link rel="stylesheet" href="./Style/main.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="app">
-    <header>Header</header>
+    <!-- <header>Header</header> -->
+    <div class="search-bar" id="searchBar">
+      <img src="img/icon-ham-menu.png"  height="50">
+      <input id="search" class="search" type="text" placeholder="Search">
+    </div>
     <nav class="hamburger-menu" id='hamburgerMenu'>
       <!-- <a href="#" class="nav-link">
         <img src="img/icon-ham-menu.png" height="50">
@@ -18,21 +22,26 @@
       <a href="#" class="nav-link" data-page="gif_home">Gifs</a>
       <a href="#" class="nav-link" data-page="upload">Upload</a>
       <a href="#" class="nav-link" data-page="favorites">Favorites</a>
-      <a href="#" class="nav-link" data-page="uploaded">Uploaded Gifs</a>
       <a href="#" class="nav-link" data-page="about">About</a>
 
     </nav>
-    <div class="search-bar" id="searchBar">
-      <input id="search" class="search" type="text" placeholder="Search">
+    <!-- <div class="search" id="searchBar">
+      <input id="search" class="search" type="text" placeholder="Search"> -->
 
       <div class="categories">
-        <button id="nav-sport">#sport</button>
+        <!-- <button id="nav-sport">#sport</button>
         <button id="nav-wow">#wow</button>
         <button id="nav-lol">#lol</button>
         <button id="nav-js">#js</button>
-        <button id="nav-cats">#cats</button>
+        <button id="nav-cats">#cats</button> -->
+
+        <a href="#" id="nav-sport" class="category" data-page="category_sport">#sport</a>
+        <a href="#" id="nav-wow" class="category" data-page="category_wow">#wow</a>
+        <a href="#" id="nav-lol" class="category" data-page="category_lol">#lol</a>
+        <a href="#" id="nav-js" class="category" data-page="category_js">#js</a>
+        <a href="#" id="nav-cats" class="category" data-page="category_cats">#cats</a>
       </div>
-    </div>
+    <!-- </div> -->
 
       <div id="container">
         <div class="gif-gallery"> </div>

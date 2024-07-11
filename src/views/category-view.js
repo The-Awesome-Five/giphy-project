@@ -11,7 +11,7 @@ export const toGifCategorieView = async (data, name = 'Trending', isLocalStorage
   });
 
   return `
-    <h1>${name}:</h1>
+    <h1>${name}</h1>
     <div id="container">
       <div class="gif-gallery">
         ${cols.map((col, index) => `
