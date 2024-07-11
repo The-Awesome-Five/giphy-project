@@ -1,15 +1,15 @@
 export const toGifCategorieView = async (data, name = 'Trending', isLocalStorage = false) => {
   let counter = 0;
   let cols = [[], [], []];
-
+  console.log(data);
   const gifUrls = await Promise.all(data.map(el => isLocalStorage ? `https://media.giphy.com/media/${el}/giphy.gif` : toGif(el)));
-
+ console.log(gifUrls);
   gifUrls.forEach((url, index) => {
     const gifElement = `<div class="gif"><img class='test' src="${url}" alt="Gif"></div>`;
     cols[counter].push(gifElement);
     counter = (counter + 1) % 3;
   });
-
+  console.log(gifUrls);
   return `
     <h1>${name}</h1>
     <div id="container">
@@ -25,5 +25,5 @@ export const toGifCategorieView = async (data, name = 'Trending', isLocalStorage
 };
 
 export const toGif = (data) => {
-  return data.images.original.url;
+  return data.images.original.url || '';
 };

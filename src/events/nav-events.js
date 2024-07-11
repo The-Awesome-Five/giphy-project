@@ -2,7 +2,7 @@ import { ABOUT, FAVORITE, UPLOAD, GIFS, CONTAINER_SELECTOR } from "../common/con
 import { toAboutView } from "../views/view-about.js";
 import { toGifCategorieView } from "../views/category-view.js";
 import { toUploadView } from "../views/upload-view.js";
-
+import { toFavoritesView } from "../views/favourite-view.js";
 import { getTrendingGifs, searchGif } from "../requests/giphy-service.js";
 import {renderSearchGifs} from "./search-event.js";
 
@@ -16,16 +16,16 @@ export const loadPage = (page = '') => {
         return renderHome();
       case FAVORITE:
         setActiveNav(FAVORITE);
-        return renderCategories();
+        return renderFavorite();
       case UPLOAD:
         setActiveNav(UPLOAD);
         return renderUpload();
       case ABOUT:
         setActiveNav(ABOUT);
         return renderAbout();
-      case UPLOADED:
-        setActiveNav(UPLOADED);
-        return renderUploaded();
+      // case UPLOADED:
+      //   setActiveNav(UPLOADED);
+      //   return renderUploaded();
       // case SPORT:
       //   setActiveNav(SPORT);
       //   return renderHome();
@@ -73,6 +73,10 @@ export const loadPage = (page = '') => {
 //   document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs.data, 'cats');
 // }
 
+export const renderFavorite= async () => {
+  document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(JSON.parse(localStorage.getItem('Favorite')), 'favorite', true)
+}
+
 export const renderUpload = () => {
   document.querySelector(CONTAINER_SELECTOR).innerHTML = toUploadView()
 }
@@ -83,7 +87,7 @@ export const renderAbout = () => {
 
 export const renderHome = async ()=> {
 const gifs = await getTrendingGifs()
-document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs.data, 'trending');
+document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs.data, 'trending',);
 }
 
  export  const setActiveNav = (page) => {
