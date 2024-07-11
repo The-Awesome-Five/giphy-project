@@ -14,7 +14,9 @@ export const handleUploadEvent = async (event) => {
 
     event.preventDefault();
 
-    const fileInput = document.getElementById('gif-upload');
+    const form = event.target;
+    const fileInput = form.querySelector('#gif-upload');
+
     const file = fileInput.files[0];
     if (file) {
         try {
