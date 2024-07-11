@@ -1,4 +1,4 @@
-import { ABOUT, FAVORITE, UPLOAD, GIFS, CONTAINER_SELECTOR } from "../common/constants.js";
+import { ABOUT, FAVORITE, UPLOAD, GIFS, CONTAINER_SELECTOR,UPLOADED } from "../common/constants.js";
 import { toAboutView } from "../views/view-about.js";
 import { toGifCategorieView } from "../views/category-view.js";
 import { toUploadView } from "../views/upload-view.js";
@@ -23,9 +23,9 @@ export const loadPage = (page = '') => {
       case ABOUT:
         setActiveNav(ABOUT);
         return renderAbout();
-      // case UPLOADED:
-      //   setActiveNav(UPLOADED);
-      //   return renderUploaded();
+      case UPLOADED:
+        setActiveNav(UPLOADED);
+        return renderUploaded();
       // case SPORT:
       //   setActiveNav(SPORT);
       //   return renderHome();
@@ -73,8 +73,12 @@ export const loadPage = (page = '') => {
 //   document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs.data, 'cats');
 // }
 
-export const renderFavorite= async () => {
+export const renderFavorite = async () => {
   document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(JSON.parse(localStorage.getItem('Favorite')), 'favorite', true)
+}
+
+export const renderUploaded = async () => {
+  document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(JSON.parse(localStorage.getItem('uploaded')), 'uploaded', true)
 }
 
 export const renderUpload = () => {
