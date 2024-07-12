@@ -1,5 +1,6 @@
-import {uploadGif} from "../requests/giphy-service.js";
+import {getRelatedGifs, uploadGif} from "../requests/giphy-service.js";
 import {addUploadedGif} from "../data/uploaded-gifs.js";
+import {toGifCategorieView} from "../views/category-view.js";
 
 const handleUpload = async (file) => {
 
@@ -32,4 +33,31 @@ export const handleUploadEvent = async (event) => {
     } else {
         form.querySelector('#gif-upload').innerText = 'Please select a file to upload.';
     }
+}
+
+export const renderRelatedGifs = async (id) => {
+
+    const relatedGifs = await getRelatedGifs(id, 12);
+    const gifIds = relatedGifs.data.map(el => el.id);
+
+    return toGifCategorieView(gifIds, 'Related', true)
+
+}
+
+export const toGif = (data) => {
+    return data.images.original.url || '';
+};
+
+
+export const gifPlacement = async (data,isLocalStorage ) =>{
+    let counter = 0;
+    let cols = [[], [], []];
+    const gifUrls = await Promise.all(data.map(el => isLocalStorage ? `https://media.giphy.com/media/${el}/giphy.gif` : toGif(el)));
+    gifUrls.forEach((url, index) => {
+        const gifElement = `<div class="gif"><img class='test' src="${url}" alt="Gif"></div>`;
+        cols[counter].push(gifElement);
+        counter = (counter + 1) % 3;
+    });
+    console.log(cols)
+    return cols;
 }

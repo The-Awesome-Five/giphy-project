@@ -1,3 +1,5 @@
+import {gifPlacement} from "../events/giphy-events.js";
+
 export const toGifCategorieView = async (data, name = 'Trending', isLocalStorage = false) => {
   const cols = await gifPlacement(data,isLocalStorage);
   return `
@@ -14,22 +16,6 @@ export const toGifCategorieView = async (data, name = 'Trending', isLocalStorage
   `;
 };
 
-export const toGif = (data) => {
-  return data.images.original.url || '';
-};
 
-
-const gifPlacement = async (data,isLocalStorage ) =>{
-  let counter = 0;
-  let cols = [[], [], []];
-  const gifUrls = await Promise.all(data.map(el => isLocalStorage ? `https://media.giphy.com/media/${el}/giphy.gif` : toGif(el)));
-  gifUrls.forEach((url, index) => {
-    const gifElement = `<div class="gif"><img class='test' src="${url}" alt="Gif"></div>`;
-    cols[counter].push(gifElement);
-    counter = (counter + 1) % 3;
-  });
-  console.log(cols)
-  return cols;
-}
 
 //gifGallery.innerHTML = gifGallery.innerHTML + gifPlacement(data)
