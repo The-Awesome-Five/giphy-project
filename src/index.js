@@ -1,7 +1,7 @@
 import {loadPage, renderHome} from "./events/nav-events.js";
 import {handleUploadEvent} from "./events/giphy-events.js";
 import {renderSearchGifs} from "./events/search-event.js";
-import {renderDetailedView} from "./events/detailed-even.js";
+import {renderDetailedView} from "./events/detailed-events.js";
 import {addToFavorite} from "./data/favorite-gifs.js";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,8 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target.classList.contains('test')) {
             const imgSrc = event.target.src;
             const imgSrcParts = imgSrc.split('/');
-
-            event.preventDefault();
             renderDetailedView(imgSrcParts[imgSrcParts.length - 2]);
         }
 

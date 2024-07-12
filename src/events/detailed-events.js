@@ -1,4 +1,4 @@
-import {getGIfById, getViewCount, searchGif} from "../requests/giphy-service.js";
+import {getGIfById, getViewCount} from "../requests/giphy-service.js";
 import {CONTAINER_SELECTOR} from "../common/constants.js";
 import { toDetailedView } from "../views/detailed-view.js";
 
