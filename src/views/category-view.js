@@ -28,5 +28,8 @@ const gifPlacement = async (data,isLocalStorage ) =>{
     cols[counter].push(gifElement);
     counter = (counter + 1) % 3;
   });
+  console.log(cols)
   return cols;
 }
+
+//gifGallery.innerHTML = gifGallery.innerHTML + gifPlacement(data)

@@ -49,7 +49,7 @@ export const renderAbout = () => {
 };
 
 export const renderHome = async ()=> {
-const gifs = await getTrendingGifs()
+const gifs = await getTrendingGifs(12)
 document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs.data, 'trending',);
 }
 

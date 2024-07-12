@@ -1,7 +1,9 @@
+import {getRelatedGifs} from "../requests/giphy-service.js";
+import {toGifCategorieView} from "./category-view.js";
 
-export const toDetailedView =  (info, views) => {
+export const toDetailedView = async (info, views) => {
     return `
-     
+<div id="detailed-view">
           <img id="gif" src=${info.images.original.url} alt="Gif">
           ${'\n'}
           <h1> User: ${info.username}</h2>
@@ -11,9 +13,24 @@ export const toDetailedView =  (info, views) => {
           <h2> Upload Date: ${info.import_datetime}</h2>
 
             <button id='favorite'>Add to Favorite</button>
-            <button id='getURL">Get URL</button>
-        </div>
-      </div>
+            <button id="getURL">Get URL</button>
+            </div>
+             <div id="container">
+${await renderRelatedGifs(info.id)}
+</div>
     `;
-  };
+};
 
+const renderRelatedGifs = async (id) => {
+
+    const relatedGifs = await getRelatedGifs(id, 12);
+    const gifIds = relatedGifs.data.map(el => el.id);
+
+    return toGifCategorieView(gifIds, 'Related', true)
+
+}
+
+
+// <div id="container">
+//     ${await renderRelatedGifs(info.id)}
+// </div>
