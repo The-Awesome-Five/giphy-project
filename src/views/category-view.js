@@ -15,7 +15,3 @@ export const toGifCategorieView = async (data, name = 'Trending', isLocalStorage
     </div>
   `;
 };
-
-
-
-//gifGallery.innerHTML = gifGallery.innerHTML + gifPlacement(data)

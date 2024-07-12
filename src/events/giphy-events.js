@@ -48,9 +48,6 @@ export const getURL = (data) => {
     return data.images.original.url || '';
 };
 
-
-
-
 export const splitGifs = async (data,isLocalStorage ) =>{
     let counter = 0;
     let cols = [[], [], []];
