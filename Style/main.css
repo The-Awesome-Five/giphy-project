@@ -55,10 +55,14 @@ header {
 
 .search-bar > img {
     margin-right: 20px;
-    
+
 }
-.search-bar > #logo {
-    margin-right: 80px
+#logo {
+    margin-right: 20px;
+}
+
+#logo:hover {
+    cursor: pointer;
 }
 
 .search-bar input {
