@@ -132,7 +132,7 @@ header {
 
 
 
-#about-view {
+/* #about-view {
 
     background: white;
     padding: 20px;
@@ -163,13 +163,44 @@ header {
 
 h1 {
     text-align: center;
-}
+} */
 
 /* ABOUT VIEW STYLE */
 #about-view {
     background-color: rgb(42, 42, 42);
+    border-radius: 20px;
+    margin-top: 25px;
+}
+
+#about-view > #container > h1 {
+    margin-left: 20px;
+    padding-top: 20px;
+}
+
+#about-view > #container > p {
+    text-align: left;
+    padding-right: 20px;
+    margin-left: 20px;
+    font-size: large;
+    color: rgb(179, 179, 179);
 }
 
 #about-view > #container > img {
+    text-align: center;
+}
+
+#container-dev {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+#container-dev > img {
+    border-radius: 50%;
+    border: 5px solid rgb(179, 179, 179);
+}
+
+#container-dev > p {
     text-align: center;
 }
