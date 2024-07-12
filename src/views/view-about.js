@@ -4,7 +4,7 @@ export const toAboutView = () => `
       <h1>welcome to github</h1>
       <p>
         At gifHub, we believe in the power of visual storytelling. 
-        Our platform is dedicated to providing a seamless and enjoyable experience for creating, 
+        Our platform is dedicated to providing a seamless and enjoyable experience for 
         sharing, and discovering animated GIFs that capture the essence of your moments, ideas, and emotions.
       </p>
       <p> </p>
