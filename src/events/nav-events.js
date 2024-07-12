@@ -5,7 +5,7 @@ import { toUploadView } from "../views/upload-view.js";
 import { toFavoritesView } from "../views/favourite-view.js";
 import { getTrendingGifs, searchGif } from "../requests/giphy-service.js";
 import {renderSearchGifs} from "./search-event.js";
-
+import { getFavoriteGifs } from "../data/favorite-gifs.js";
 
 export const loadPage = (page = '') => {
 
@@ -74,7 +74,7 @@ export const loadPage = (page = '') => {
 // }
 
 export const renderFavorite = async () => {
-  document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(JSON.parse(localStorage.getItem('Favorite')), 'favorite', true)
+  document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(getFavoriteGifs(), 'favorite', true)
 }
 
 export const renderUploaded = async () => {

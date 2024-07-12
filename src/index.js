@@ -3,6 +3,7 @@ import {loadPage, renderHome} from "./events/nav-events.js";
 import {handleUploadEvent} from "./events/giphy-events.js";
 import {renderSearchGifs} from "./events/search-event.js";
 import { renderDetailedView } from "./events/detailed-even.js";
+import { addToFavorite } from "./data/favorite-gifs.js";
 // const message = await searchGif('happy birthday');
 
 // const trendingGifs = await getTrendingGifs();
@@ -75,16 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (event.target.id.includes('favorite')) {
-            let favorite = JSON.parse(localStorage.getItem('Favorite')) || [];
-         
-            const imgElement = event.target.closest('div').querySelector('img');
-            const imgSrc = imgElement.src;
-            const imgSrcParts = imgSrc.split('/');
-            if(favorite.includes(imgSrcParts[imgSrcParts.length - 2])){}
-            else{
-            favorite.push(imgSrcParts[imgSrcParts.length - 2]);
-            localStorage.setItem('Favorite', JSON.stringify(favorite));
-            }
+            addToFavorite();
         }
     });
 

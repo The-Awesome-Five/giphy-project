@@ -1,6 +1,4 @@
 export const toFavoritesView = (localStorageIDs, className) => {
-  console.log(localStorageIDs);
-  console.log(typeof(localStorageIDs));
   `
 <div id=${className}>
   <h1>${className[0].toUpperCase()+className.slice(1)} Gifs:</h1>
