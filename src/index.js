@@ -3,10 +3,15 @@ import {handleUploadEvent} from "./events/giphy-events.js";
 import {renderSearchGifs} from "./events/search-event.js";
 import {renderDetailedView} from "./events/detailed-events.js";
 import {addToFavorite} from "./data/favorite-gifs.js";
+import {previewImage} from "./events/file-event.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
     renderHome();
+
+    document.addEventListener('change', (event) => {
+        previewImage(event);
+    })
 
     document.addEventListener('submit', event => {
 

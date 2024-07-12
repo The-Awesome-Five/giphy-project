@@ -6,7 +6,7 @@ export const searchGif = async (searchTerm = '') => {
     return request.get(`${API_URL}/search?api_key=${API_KEY}&q=${searchTerm}`);
 }
 
-export const getTrendingGifs = async () => {
+export const getTrendingGifs = async (offset = undefined) => {
     return request.get(`${API_URL}/trending?api_key=${API_KEY}`);
 }
 

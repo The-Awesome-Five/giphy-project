@@ -7,6 +7,9 @@ export const toUploadView = () =>`
                 <button type="submit">Upload</button>
             </form>
         </div>    
-    <div id="upload-status"></div>
+    <div id="upload-status">
+    <img id="preview-image" src="" alt="preview-image" />
+</div>
   </div>
 `;
+
