@@ -54,8 +54,11 @@ header {
 }
 
 .search-bar > img {
-    margin-right: 167px;
+    margin-right: 20px;
     
+}
+.search-bar > #logo {
+    margin-right: 80px
 }
 
 .search-bar input {
@@ -159,5 +162,14 @@ header {
 }
 
 h1 {
+    text-align: center;
+}
+
+/* ABOUT VIEW STYLE */
+#about-view {
+    background-color: rgb(42, 42, 42);
+}
+
+#about-view > #container > img {
     text-align: center;
 }
