@@ -44,15 +44,17 @@ export const renderRelatedGifs = async (id) => {
 
 }
 
-export const toGif = (data) => {
+export const getURL = (data) => {
     return data.images.original.url || '';
 };
 
 
-export const gifPlacement = async (data,isLocalStorage ) =>{
+
+
+export const splitGifs = async (data,isLocalStorage ) =>{
     let counter = 0;
     let cols = [[], [], []];
-    const gifUrls = await Promise.all(data.map(el => isLocalStorage ? `https://media.giphy.com/media/${el}/giphy.gif` : toGif(el)));
+    const gifUrls= await toGifUrl(data, isLocalStorage);
     gifUrls.forEach((url, index) => {
         const gifElement = `<div class="gif"><img class='test' src="${url}" alt="Gif"></div>`;
         cols[counter].push(gifElement);
@@ -60,4 +62,8 @@ export const gifPlacement = async (data,isLocalStorage ) =>{
     });
     console.log(cols)
     return cols;
+}
+
+const toGifUrl = async (data, isLocalStorage) => {
+    return await Promise.all(data.map(el => isLocalStorage ? `https://media.giphy.com/media/${el}/giphy.gif` : getURL(el)));
 }
