@@ -4,7 +4,7 @@ import {renderSearchGifs} from "./events/search-event.js";
 import {renderDetailedView} from "./events/detailed-events.js";
 import {addToFavorite} from "./data/favorite-gifs.js";
 import {previewImage} from "./events/file-event.js";
-
+import { removeFromFavorite } from "./data/favorite-gifs.js";
 document.addEventListener('DOMContentLoaded', () => {
 
     renderHome();
@@ -54,6 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (event.target.id.includes('favorite')) {
             addToFavorite();
+        }
+        if (event.target.id.includes('remove')) {
+            const id =event.target.getAttribute('link');
+            removeFromFavorite(id);
         }
 
         if (event.target.id.includes('getURL')) {
