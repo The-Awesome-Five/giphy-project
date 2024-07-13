@@ -12,15 +12,17 @@ localStorage.setItem('favorite', JSON.stringify(favorite));
 }
 
 export const removeFromFavorite = (id) => {
-    console.log(id);
+
     let favorite = JSON.parse(localStorage.getItem('favorite')) || [];
-    console.log(favorite);
+
     favorite= favorite.filter(fav=> fav!==id);
-    console.log(favorite);
+
     localStorage.setItem('favorite', JSON.stringify(favorite));
 }
 
-export const getFavoriteGifs = () => [...favorite];
+export const getFavoriteGifs = () => {
+    favorite = JSON.parse(localStorage.getItem('favorite')) || [];
+    return [...favorite]};
 
 export const createFavoriteButton = (id, flag ) => {
     return  flag ?  `<button id='remove' link = "${id}">Remove from Favorite</button>` : `<button id='favorite'>Add to Favorite</button>`;
