@@ -64,3 +64,16 @@ export const splitGifs = async (data,isLocalStorage ) =>{
 const toGifUrl = async (data, isLocalStorage) => {
     return await Promise.all(data.map(el => isLocalStorage ? `https://media.giphy.com/media/${el}/giphy.gif` : getURL(el)));
 }
+
+
+export const copyUrl = (url) =>{
+    console.log(url);
+    const imgSrc = url
+    const tempInput = document.createElement('input');
+    tempInput.value = imgSrc;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+}

@@ -1,5 +1,5 @@
 import {loadPage, renderHome} from "./events/nav-events.js";
-import {handleUploadEvent} from "./events/giphy-events.js";
+import {copyUrl, handleUploadEvent} from "./events/giphy-events.js";
 import {renderSearchGifs} from "./events/search-event.js";
 import {renderDetailedView} from "./events/detailed-events.js";
 import {addToFavorite} from "./data/favorite-gifs.js";
@@ -54,6 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (event.target.id.includes('favorite')) {
             addToFavorite();
+        }
+
+        if (event.target.id.includes('getURL')) {
+            const imgSrc = event.target.getAttribute('url');
+            copyUrl(imgSrc);
         }
     });
 

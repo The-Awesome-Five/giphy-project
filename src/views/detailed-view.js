@@ -11,7 +11,7 @@ export const toDetailedView = async (info, views) => {
            ${'\n'}
           <h2> Upload Date: ${info.import_datetime}</h2>
             <button id='favorite'>Add to Favorite</button>
-            <button id="getURL">Get URL</button>
+            <button id="getURL" url="${info.images.original.url}">Get URL</button>
             </div>
              <div id="container">
              ${await renderRelatedGifs(info.id)}
