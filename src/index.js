@@ -1,10 +1,11 @@
 import {loadPage, renderHome} from "./events/nav-events.js";
-import {copyUrl, handleUploadEvent} from "./events/giphy-events.js";
+    import {copyUrl, handleUploadEvent} from "./events/giphy-events.js";
 import {renderSearchGifs} from "./events/search-event.js";
 import {renderDetailedView} from "./events/detailed-events.js";
 import {addToFavorite} from "./data/favorite-gifs.js";
 import {previewImage} from "./events/file-event.js";
 import { removeFromFavorite } from "./data/favorite-gifs.js";
+import {resetGifState} from "./state/gif-state.js";
 document.addEventListener('DOMContentLoaded', () => {
 
     renderHome();
@@ -34,17 +35,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', event => {
 
         if (event.target.classList.contains('nav-link')) {
-            loadPage(event.target.getAttribute('data-page'));
-        }
-
-        if (event.target.id === 'logo') {
+            resetGifState()
             loadPage(event.target.getAttribute('data-page'));
         }
 
         // nav-cats
         if (event.target.id.includes('nav')) {
+            resetGifState()
             renderSearchGifs(event.target.id.slice(4))
         }
+
+        if (event.target.id === 'logo') {
+            resetGifState()
+            loadPage(event.target.getAttribute('data-page'));
+        }
+
 
         if (event.target.classList.contains('test')) {
             const imgSrc = event.target.src;

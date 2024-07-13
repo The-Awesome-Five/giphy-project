@@ -29,3 +29,22 @@
 // detailed - getGifStatebyId
 // favourites - id => id: { }
 //
+
+//
+
+let gifState = [];
+
+export const populateGifState = (data) => {
+    gifState = data.map(gif => ({
+        id: gif.id,
+        username: gif.username,
+        date: gif.import_datetime,
+        url: gif.images.original.url
+    }));
+}
+
+export const getGifState = () => [...gifState];
+
+export const resetGifState = () => {
+    gifState = [];
+}
