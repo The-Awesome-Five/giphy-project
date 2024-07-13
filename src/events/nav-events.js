@@ -6,7 +6,7 @@ import { getTrendingGifs } from "../requests/giphy-service.js";
 import { getFavoriteGifs } from "../data/favorite-gifs.js";
 import { getUploadedGifs } from "../data/uploaded-gifs.js";
 import {getGifState, populateGifState} from "../state/gif-state.js";
-
+import { incrementCurrOffset } from "../state/gif-state.js";
 
 export const loadPage = (page = '') => {
 
@@ -50,12 +50,12 @@ export const renderAbout = () => {
 };
 
 export const renderHome = async ()=> {
-const gifs = await getTrendingGifs(12);
-
+const gifs = await getTrendingGifs(15);
+incrementCurrOffset();
 populateGifState(gifs.data);
 
-    console.log('STATE:')
-    console.log(getGifState())
+    // console.log('STATE:')
+    // console.log(getGifState())
 
 document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs.data, 'trending',);
 }

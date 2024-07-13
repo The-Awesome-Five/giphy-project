@@ -6,6 +6,8 @@ import {addToFavorite} from "./data/favorite-gifs.js";
 import {previewImage} from "./events/file-event.js";
 import { removeFromFavorite } from "./data/favorite-gifs.js";
 import {resetGifState} from "./state/gif-state.js";
+import { handleScroll } from "./events/scroll-event.js";
+
 document.addEventListener('DOMContentLoaded', () => {
 
     renderHome();
@@ -32,13 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    document.addEventListener('scroll', event => {
+    document.addEventListener('scroll', async () => {
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight - 100;
+        const currentScroll = window.scrollY || document.documentElement.scrollTop;
 
-        if (document.body.scrollTop > 600) {
-
+        if (currentScroll >= scrollableHeight) {
+            await handleScroll(true);
         }
-
-    })
+    });
 
     document.addEventListener('click', event => {
 
