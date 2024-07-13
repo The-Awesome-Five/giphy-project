@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('scroll', async () => {
-        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight - 100;
         const currentScroll = window.scrollY || document.documentElement.scrollTop;
-    
+
         if (currentScroll >= scrollableHeight) {
-            await handleScroll(true); 
+            await handleScroll(true);
         }
     });
 
