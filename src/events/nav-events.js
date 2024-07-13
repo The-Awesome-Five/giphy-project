@@ -54,8 +54,8 @@ const gifs = await getTrendingGifs(15);
 incrementCurrOffset();
 populateGifState(gifs.data);
 
-    console.log('STATE:')
-    console.log(getGifState())
+    // console.log('STATE:')
+    // console.log(getGifState())
 
 document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs.data, 'trending',);
 }

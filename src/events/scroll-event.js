@@ -14,8 +14,8 @@ export const handleScroll = async (isTrending = true, searchTerm = '') => {
         incrementOffset();
         populateGifState(gifs.data);
     }
-    console.log(getCurrOffset());
-    console.log(getOffset());
+    // console.log(getCurrOffset());
+    // console.log(getOffset());
     const cols = [document.querySelector('#col-0'), document.querySelector('#col-1'), document.querySelector('#col-2')];
 
     let newGifs = getGifState();
@@ -31,17 +31,4 @@ export const handleScroll = async (isTrending = true, searchTerm = '') => {
     });
 
     incrementCurrOffset();
-
-    return `
-    <h1>Updated Gifs</h1>
-    <div id="container">
-      <div class="gif-gallery">
-        ${cols.map((col, index) => `
-          <div id="col-${index}">
-            ${col.innerHTML}
-          </div>
-        `).join('\n')}
-      </div>
-    </div>
-    `;
 }

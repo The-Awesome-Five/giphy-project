@@ -34,7 +34,7 @@ export const handleUploadEvent = async (event) => {
         form.querySelector('#gif-upload').innerText = 'Please select a file to upload.';
     }
 }
-
+// view's helper function
 export const renderRelatedGifs = async (id) => {
 
     const relatedGifs = await getRelatedGifs(id, 12);

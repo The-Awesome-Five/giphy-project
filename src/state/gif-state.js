@@ -37,12 +37,14 @@ let offset = 15;
 let currOffset = 0;
 
 export const populateGifState = (data) => {
+
    const temp = data.map(gif => ({
         id: gif.id,
         username: gif.username,
         date: gif.import_datetime,
         url: gif.images.original.url
     }));
+
     gifState=[...gifState,...temp];
 }
 
