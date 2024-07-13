@@ -57,6 +57,29 @@ header {
     margin-right: 20px;
 
 }
+
+#search-btn {
+    margin-left: 20px;
+    background-color: #F98E2D;
+    border-radius: 8px;
+    color: black;
+    padding: 0.6rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#search-btn:hover {
+    cursor: pointer;
+}
+
+#search-btn:active {
+    box-shadow: 2px 2px #666;
+    transform: translateY(4px);
+}
+
 #logo {
     margin-right: 20px;
 }
