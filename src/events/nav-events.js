@@ -50,7 +50,7 @@ export const renderAbout = () => {
 };
 
 export const renderHome = async ()=> {
-const gifs = await getTrendingGifs(12);
+const gifs = await getTrendingGifs(15);
 
 populateGifState(gifs.data);
 

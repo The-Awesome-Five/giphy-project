@@ -1,12 +1,12 @@
 import * as request from "./requester.js";
 import {API_KEY, API_URL} from "../common/constants.js";
 
-export const searchGif = async (searchTerm = '', limit = 25, offset = 0) => {
+export const searchGif = async (searchTerm = '', limit = 45, offset = 0) => {
 
     return request.get(`${API_URL}/search?api_key=${API_KEY}&limit=${limit}&offset=${offset}&q=${searchTerm}`);
 }
 
-export const getTrendingGifs = async (limit = 25, offset = 0) => {
+export const getTrendingGifs = async (limit = 45, offset = 0) => {
     return request.get(`${API_URL}/trending?api_key=${API_KEY}&limit=${limit}&offset=${offset}`);
 }
 

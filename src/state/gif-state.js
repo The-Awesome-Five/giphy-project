@@ -37,12 +37,13 @@ let offset = 0;
 let currOffset = 0;
 
 export const populateGifState = (data) => {
-    gifState = data.map(gif => ({
+   const temp = data.map(gif => ({
         id: gif.id,
         username: gif.username,
         date: gif.import_datetime,
         url: gif.images.original.url
     }));
+    gifState=[...gifState,...temp];
 }
 
 export const getGifState = () => [...gifState];
@@ -57,4 +58,4 @@ export const getOffset = () => offset;
 export const incrementOffset = () => offset+=45;
 
 export const getCurrOffset = () => currOffset;
-export const incrementCurrOffset = () => offset+=15;
+export const incrementCurrOffset = () => currOffset+=15;

@@ -57,7 +57,21 @@ export const splitGifs = async (data,isLocalStorage ) =>{
         cols[counter].push(gifElement);
         counter = (counter + 1) % 3;
     });
-    console.log(cols)
+    return cols;
+}
+
+export const splitGifTest = (data) =>{
+    console.log(data)
+    let counter = 0;
+    let cols = [[], [], []];
+    let Gifs = data.map(el=>{ return `https://media.giphy.com/media/${el.id}/giphy.gif`})
+    console.log(Gifs)
+    Gifs.forEach((url, index) => {
+        const gifElement = `<div class="gif"><img class='test' src="${url}" alt="Gif"></div>`;
+        cols[counter].push(gifElement);
+        counter = (counter + 1) % 3;
+    });
+
     return cols;
 }
 
