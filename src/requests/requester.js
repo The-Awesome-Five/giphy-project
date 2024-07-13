@@ -1,26 +1,27 @@
-const request = async (method, url, data, headers) => {
+const request = async (method, url, data = null, headers = {}, contentType = 'application/json') => {
     try {
+        const options = {
+            method,
+            headers: {
+                ...headers
+            }
+        };
 
-        let buildRequest;
-
-        if (method === 'GET') {
-            buildRequest = fetch(url, { headers });
-        } else {
-            buildRequest = fetch(url, {
-                method,
-                headers: {
-                    ...headers,
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
+        if (data && !(data instanceof FormData)) {
+            if (contentType) {
+                options.headers['content-type'] = contentType;
+            }
+            options.body = contentType === 'application/json' ? JSON.stringify(data) : data;
+        } else if (data) {
+            options.body = data;
         }
-        const response = await buildRequest;
+
+        const response = await fetch(url, options);
 
         return await response.json();
 
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
     }
 };
 

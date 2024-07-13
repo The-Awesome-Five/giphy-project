@@ -31,10 +31,12 @@ export const uploadGif = async (body) => {
 
     body.append('api_key', API_KEY);
 
-    const response = await fetch('https://upload.giphy.com/v1/gifs', {
+    /*const response = await fetch('https://upload.giphy.com/v1/gifs', {
         method: 'POST',
         body: body
     });
 
-    return response.json();
+    return response.json();*/
+
+    return request.post('https://upload.giphy.com/v1/gifs', body)
 }
