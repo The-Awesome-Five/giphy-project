@@ -15,3 +15,7 @@ export const toGifCategorieView = async (data, name = 'Trending', isLocalStorage
     </div>
   `;
 };
+
+// document.querySelector('#col-1')
+// document.querySelector('#col-2').innerHTML = document.querySelector('#col-2').innerHTML +  ${col.join('\n')}
+// document.querySelector('#col-3')

@@ -7,8 +7,6 @@ export const renderSearchGifs = async (searchTerm) => {
     // gifs
     const gifs = await searchGif(searchTerm);
 
-    // populateGifState(gifs)
-
     populateGifState(gifs.data);
 
     document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs.data,searchTerm);

@@ -30,6 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
             renderSearchGifs(event.target.value);
         }
 
+    });
+
+    document.addEventListener('scroll', event => {
+
+        if (document.body.scrollTop > 600) {
+
+        }
+
     })
 
     document.addEventListener('click', event => {
