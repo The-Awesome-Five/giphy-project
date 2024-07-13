@@ -7,6 +7,7 @@ import {previewImage} from "./events/file-event.js";
 import { removeFromFavorite } from "./data/favorite-gifs.js";
 import {resetGifState} from "./state/gif-state.js";
 import { handleScroll } from "./events/scroll-event.js";
+import {searchGif} from "./requests/giphy-service.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -46,21 +47,25 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', event => {
 
         if (event.target.classList.contains('nav-link')) {
-            resetGifState()
+            resetGifState();
             loadPage(event.target.getAttribute('data-page'));
         }
 
         // nav-cats
         if (event.target.id.includes('nav')) {
-            resetGifState()
+            resetGifState();
             renderSearchGifs(event.target.id.slice(4))
         }
 
         if (event.target.id === 'logo') {
-            resetGifState()
+            resetGifState();
             loadPage(event.target.getAttribute('data-page'));
         }
 
+        if (event.target.id === 'search-btn') {
+            resetGifState();
+            renderSearchGifs(event.target.parentElement.querySelector('#search').value);
+        }
 
         if (event.target.classList.contains('test')) {
             const imgSrc = event.target.src;
