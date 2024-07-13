@@ -33,7 +33,7 @@
 //
 
 let gifState = [];
-let offset = 0;
+let offset = 15;
 let currOffset = 0;
 
 export const populateGifState = (data) => {
@@ -50,7 +50,7 @@ export const getGifState = () => [...gifState];
 
 export const resetGifState = () => {
     gifState = [];
-    offset = 0;
+    offset = 15;
     currOffset = 0;
 }
 
