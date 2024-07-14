@@ -7,9 +7,15 @@ export const handleScroll = async (isTrending = true) => {
   let gifs = [];
   const searchTerm = isTrending ? '' : document.querySelector('h1').textContent;
 
+  // initial gif loading for categories and search
+  if (!isTrending && getGifState().length === 15) {
+    gifs = await searchGif(searchTerm, 45, getOffset());
+    incrementCurrOffset();
+    incrementOffset();
+    populateGifState(gifs.data);
+  }
   // check if we have more gifs to load
   if (getOffset() === getCurrOffset()) {
-
     gifs = isTrending ?
       await getTrendingGifs(45, getOffset()) :
       await searchGif(searchTerm, 45, getOffset());
@@ -22,6 +28,10 @@ export const handleScroll = async (isTrending = true) => {
   // turn info from Gif-state into gifs.
   let newGifs = getGifState();
   newGifs= newGifs.slice(getCurrOffset(), getCurrOffset() + 15);
+  console.log('Sliced gifs')
+  console.log(getCurrOffset())
+  console.log(getGifState())
+  console.log(newGifs)
   const result = splitGifTest(newGifs);
 
   // arrange the new gifs in the correct cols, adding them a new div.
