@@ -34,7 +34,7 @@ export const loadPage = (page = '') => {
 
 
 export const renderFavorite = async () => {
-  document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(getFavoriteGifs(), 'favorite', true);
+  document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(getFavoriteGifs(), 'favorite', true, true);
 };
 
 export const renderUploaded = async () => {

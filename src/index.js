@@ -75,10 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
       renderSearchGifs(event.target.parentElement.querySelector('#search').value);
     }
 
-    if (event.target.classList.contains('test')) {
+    if (event.target.classList.contains('single-gif')) {
+
+      const isFavourite = event.target.id.includes('favourite');
+      console.log(isFavourite)
+      console.log(event.target.id)
       const imgSrc = event.target.src;
       const imgSrcParts = imgSrc.split('/');
-      renderDetailedView(imgSrcParts[imgSrcParts.length - 2]);
+      renderDetailedView(imgSrcParts[imgSrcParts.length - 2], isFavourite);
     }
 
     if (event.target.id.includes('favorite')) {

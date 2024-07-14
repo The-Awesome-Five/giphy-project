@@ -28,10 +28,6 @@ export const handleScroll = async (isTrending = true) => {
   // turn info from Gif-state into gifs.
   let newGifs = getGifState();
   newGifs= newGifs.slice(getCurrOffset(), getCurrOffset() + 15);
-  console.log('Sliced gifs')
-  console.log(getCurrOffset())
-  console.log(getGifState())
-  console.log(newGifs)
   const result = splitGifTest(newGifs);
 
   // arrange the new gifs in the correct cols, adding them a new div.

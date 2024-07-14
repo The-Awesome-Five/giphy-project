@@ -7,9 +7,9 @@ export const toDetailedView = async (gif) => {
   const button= createFavoriteButton(gif.id, flag);
   return `
 <div id="detailed-view">
-          <img id="gif" src=${gif.url} alt="Gif">
+          <img id="gif-${gif.id}" src=${gif.url} alt="Gif">
           ${'\n'}
-          <h2> User: ${gif.username ? gif.date : 'Not Specified'}</h2>
+          <h2> User: ${gif.username ? gif.username : 'Not Specified'}</h2>
            ${'\n'}
           <h2> Upload Date: ${gif.date ? gif.date : 'Not Specified'}</h2>
             ${button};
