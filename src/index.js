@@ -78,19 +78,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target.classList.contains('single-gif')) {
 
       const isFavourite = event.target.id.includes('favourite');
-      console.log(isFavourite)
-      console.log(event.target.id)
+      console.log(isFavourite);
+      console.log(event.target.id);
       const imgSrc = event.target.src;
       const imgSrcParts = imgSrc.split('/');
       renderDetailedView(imgSrcParts[imgSrcParts.length - 2], isFavourite);
     }
 
-    if (event.target.id.includes('favorite')) {
+    if (event.target.classList.contains('favorite')) {
       addToFavorite();
-    }
-    if (event.target.id.includes('remove')) {
-      const id =event.target.getAttribute('link');
-      removeFromFavorite(id);
+      console.log('Trigger ADD');
+      const button = event.target;
+
+      console.log(button);
+      const newID= 'remove';
+      button.className = newID;
+      button.textContent ='Remove from Favorite';
+      console.log(button);
+    } else if (event.target.classList.contains('remove')) {
+      const imgID = event.target.closest('div').querySelector('img').id.split('-')[1];
+      removeFromFavorite(imgID);
+      console.log('Trigger Remove');
+      const button = event.target;
+      console.log(button);
+      const newID= 'favorite';
+      button.className = newID;
+      button.textContent ='Add to Favorite';
+      console.log(button);
     }
 
     if (event.target.id.includes('getURL')) {

@@ -4,7 +4,7 @@ import { renderRelatedGifs } from '../events/giphy-events.js';
 export const toDetailedView = async (gif) => {
 
   const flag= isInFavorite(gif.id);
-  const button= createFavoriteButton(gif.id, flag);
+  const button= createFavoriteButton(flag);
   return `
 <div id="detailed-view">
           <img id="gif-${gif.id}" src=${gif.url} alt="Gif">

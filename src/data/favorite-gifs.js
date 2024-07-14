@@ -24,8 +24,8 @@ export const getFavoriteGifs = () => {
   return [...favorite];
 };
 
-export const createFavoriteButton = (id, flag ) => {
-  return flag ? `<button id='remove' link = "${id}">Remove from Favorite</button>` : `<button id='favorite'>Add to Favorite</button>`;
+export const createFavoriteButton = (flag ) => {
+  return flag ? `<button class='remove'>Remove from Favorite</button>` : `<button class='favorite'>Add to Favorite</button>`;
 };
 
 
