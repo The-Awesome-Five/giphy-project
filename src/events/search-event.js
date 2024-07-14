@@ -5,7 +5,7 @@ import { populateGifState } from '../state/gif-state.js';
 
 export const renderSearchGifs = async (searchTerm) => {
   // gifs
-  const gifs = await searchGif(searchTerm);
+  const gifs = await searchGif(searchTerm, 15);
 
   populateGifState(gifs.data);
 

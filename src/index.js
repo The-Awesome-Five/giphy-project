@@ -30,20 +30,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (event.target.classList.contains('search') && event.key === 'Enter') {
       event.preventDefault();
+      resetGifState();
+        resetLoadedImages();
       renderSearchGifs(event.target.value);
     }
 
   });
 
-  document.addEventListener('scroll', async () => {
+  document.addEventListener('scroll', async (event) => {
     const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight - 100;
     const currentScroll = window.scrollY || document.documentElement.scrollTop;
 
+      console.log('Loaded Images')
+      console.log(getLoadedImages())
     if (currentScroll >= scrollableHeight && getLoadedImages()===15) {
-      counter++;
-      console.log(`EVENT TRIGGER ${counter}`);
+      const isTrending = event.target.querySelector('h1').textContent === 'trending';
       resetLoadedImages();
-      await handleScroll(true);
+      await handleScroll(isTrending);
     }
   });
 
@@ -51,22 +54,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (event.target.classList.contains('nav-link')) {
       resetGifState();
+      resetLoadedImages();
       loadPage(event.target.getAttribute('data-page'));
     }
 
     // nav-cats
     if (event.target.id.includes('nav')) {
       resetGifState();
+      resetLoadedImages();
       renderSearchGifs(event.target.id.slice(4));
     }
 
     if (event.target.id === 'logo') {
       resetGifState();
+      resetLoadedImages();
       loadPage(event.target.getAttribute('data-page'));
     }
 
     if (event.target.id === 'search-btn') {
       resetGifState();
+      resetLoadedImages();
       renderSearchGifs(event.target.parentElement.querySelector('#search').value);
     }
 
