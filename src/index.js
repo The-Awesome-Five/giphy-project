@@ -8,7 +8,7 @@ import { removeFromFavorite } from './data/favorite-gifs.js';
 import { getLoadedImages, resetGifState, resetLoadedImages } from './state/gif-state.js';
 import { handleScroll } from './events/scroll-event.js';
 import { searchGif } from './requests/giphy-service.js';
-let counter=0;
+const counter=0;
 document.addEventListener('DOMContentLoaded', () => {
 
   renderHome();
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target.classList.contains('search') && event.key === 'Enter') {
       event.preventDefault();
       resetGifState();
-        resetLoadedImages();
+      resetLoadedImages();
       renderSearchGifs(event.target.value);
     }
 
@@ -41,8 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight - 100;
     const currentScroll = window.scrollY || document.documentElement.scrollTop;
 
-      console.log('Loaded Images')
-      console.log(getLoadedImages())
     if (currentScroll >= scrollableHeight && getLoadedImages()===15) {
       const isTrending = event.target.querySelector('h1').textContent === 'trending';
       resetLoadedImages();

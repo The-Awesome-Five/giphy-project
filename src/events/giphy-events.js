@@ -44,7 +44,7 @@ export const renderRelatedGifs = async (id) => {
 
 };
 
-// access the json url 
+// access the json url
 export const getURL = (data) => {
   return data.images.original.url || '';
 };
@@ -56,7 +56,7 @@ export const splitGifs = async (data, isLocalStorage ) =>{
   const cols = [[], [], []];
   // function  to get URL from JSON on construct one
   const gifUrls= await toGifUrl(data, isLocalStorage);
-// splits the gifs in the correct cols and makes the html
+  // splits the gifs in the correct cols and makes the html
   gifUrls.forEach((url, index) => {
     const gifElement = `<div class="gif"><img class='test' onload=${incrementLoadedImages()} src="${url}" alt="Gif"></div>`;
     cols[counter].push(gifElement);
