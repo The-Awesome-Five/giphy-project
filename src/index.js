@@ -1,94 +1,92 @@
-import {loadPage, renderHome} from "./events/nav-events.js";
-    import {copyUrl, handleUploadEvent} from "./events/giphy-events.js";
-import {renderSearchGifs} from "./events/search-event.js";
-import {renderDetailedView} from "./events/detailed-events.js";
-import {addToFavorite} from "./data/favorite-gifs.js";
-import {previewImage} from "./events/file-event.js";
-import { removeFromFavorite } from "./data/favorite-gifs.js";
-import {resetGifState} from "./state/gif-state.js";
-import { handleScroll } from "./events/scroll-event.js";
-import {searchGif} from "./requests/giphy-service.js";
+import { loadPage, renderHome } from './events/nav-events.js';
+import { copyUrl, handleUploadEvent } from './events/giphy-events.js';
+import { renderSearchGifs } from './events/search-event.js';
+import { renderDetailedView } from './events/detailed-events.js';
+import { addToFavorite } from './data/favorite-gifs.js';
+import { previewImage } from './events/file-event.js';
+import { removeFromFavorite } from './data/favorite-gifs.js';
+import { resetGifState } from './state/gif-state.js';
+import { handleScroll } from './events/scroll-event.js';
+import { searchGif } from './requests/giphy-service.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    renderHome();
+  renderHome();
 
-    document.addEventListener('change', (event) => {
-        previewImage(event);
-    })
+  document.addEventListener('change', (event) => {
+    previewImage(event);
+  });
 
-    document.addEventListener('submit', event => {
+  document.addEventListener('submit', event => {
 
-        event.preventDefault();
+    event.preventDefault();
 
-        if (event.target.classList.contains('upload')) {
-            handleUploadEvent(event);
-        }
-    });
+    if (event.target.classList.contains('upload')) {
+      handleUploadEvent(event);
+    }
+  });
 
-    document.addEventListener('keydown', event => {
+  document.addEventListener('keydown', event => {
 
-        if (event.target.classList.contains('search') && event.key === "Enter") {
-            event.preventDefault();
-            renderSearchGifs(event.target.value);
-        }
+    if (event.target.classList.contains('search') && event.key === 'Enter') {
+      event.preventDefault();
+      renderSearchGifs(event.target.value);
+    }
 
-    });
+  });
 
-    document.addEventListener('scroll', async () => {
-        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight - 100;
-        const currentScroll = window.scrollY || document.documentElement.scrollTop;
+  document.addEventListener('scroll', async () => {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight - 100;
+    const currentScroll = window.scrollY || document.documentElement.scrollTop;
 
-        if (currentScroll >= scrollableHeight) {
-            await handleScroll(true);
-        }
-    });
+    if (currentScroll >= scrollableHeight) {
+      await handleScroll(true);
+    }
+  });
 
-    document.addEventListener('click', event => {
+  document.addEventListener('click', event => {
 
-        if (event.target.classList.contains('nav-link')) {
-            resetGifState();
-            loadPage(event.target.getAttribute('data-page'));
-        }
+    if (event.target.classList.contains('nav-link')) {
+      resetGifState();
+      loadPage(event.target.getAttribute('data-page'));
+    }
 
-        // nav-cats
-        if (event.target.id.includes('nav')) {
-            resetGifState();
-            renderSearchGifs(event.target.id.slice(4))
-        }
+    // nav-cats
+    if (event.target.id.includes('nav')) {
+      resetGifState();
+      renderSearchGifs(event.target.id.slice(4));
+    }
 
-        if (event.target.id === 'logo') {
-            resetGifState();
-            loadPage(event.target.getAttribute('data-page'));
-        }
+    if (event.target.id === 'logo') {
+      resetGifState();
+      loadPage(event.target.getAttribute('data-page'));
+    }
 
-        if (event.target.id === 'search-btn') {
-            resetGifState();
-            renderSearchGifs(event.target.parentElement.querySelector('#search').value);
-        }
+    if (event.target.id === 'search-btn') {
+      resetGifState();
+      renderSearchGifs(event.target.parentElement.querySelector('#search').value);
+    }
 
-        if (event.target.classList.contains('test')) {
-            const imgSrc = event.target.src;
-            const imgSrcParts = imgSrc.split('/');
-            renderDetailedView(imgSrcParts[imgSrcParts.length - 2]);
-        }
+    if (event.target.classList.contains('test')) {
+      const imgSrc = event.target.src;
+      const imgSrcParts = imgSrc.split('/');
+      renderDetailedView(imgSrcParts[imgSrcParts.length - 2]);
+    }
 
-        if (event.target.id.includes('favorite')) {
-            addToFavorite();
-        }
-        if (event.target.id.includes('remove')) {
-            const id =event.target.getAttribute('link');
-            removeFromFavorite(id);
-        }
+    if (event.target.id.includes('favorite')) {
+      addToFavorite();
+    }
+    if (event.target.id.includes('remove')) {
+      const id =event.target.getAttribute('link');
+      removeFromFavorite(id);
+    }
 
-        if (event.target.id.includes('getURL')) {
-            const imgSrc = event.target.getAttribute('url');
-            copyUrl(imgSrc);
-        }
-    });
+    if (event.target.id.includes('getURL')) {
+      const imgSrc = event.target.getAttribute('url');
+      copyUrl(imgSrc);
+    }
+  });
 
 });
-
-
 
 
