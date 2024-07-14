@@ -5,10 +5,10 @@ import { renderDetailedView } from './events/detailed-events.js';
 import { addToFavorite } from './data/favorite-gifs.js';
 import { previewImage } from './events/file-event.js';
 import { removeFromFavorite } from './data/favorite-gifs.js';
-import { resetGifState } from './state/gif-state.js';
+import { getLoadedImages, resetGifState, resetLoadedImages } from './state/gif-state.js';
 import { handleScroll } from './events/scroll-event.js';
 import { searchGif } from './requests/giphy-service.js';
-
+let counter=0;
 document.addEventListener('DOMContentLoaded', () => {
 
   renderHome();
@@ -39,7 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight - 100;
     const currentScroll = window.scrollY || document.documentElement.scrollTop;
 
-    if (currentScroll >= scrollableHeight) {
+    if (currentScroll >= scrollableHeight && getLoadedImages()===15) {
+      counter++;
+      console.log(`EVENT TRIGGER ${counter}`);
+      resetLoadedImages();
       await handleScroll(true);
     }
   });

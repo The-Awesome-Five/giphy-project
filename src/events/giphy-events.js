@@ -1,7 +1,7 @@
 import { getRelatedGifs, uploadGif } from '../requests/giphy-service.js';
 import { addUploadedGif } from '../data/uploaded-gifs.js';
 import { toGifCategorieView } from '../views/category-view.js';
-
+import { incrementLoadedImages } from '../state/gif-state.js';
 const handleUpload = async (file) => {
 
   const body = new FormData();
@@ -58,7 +58,7 @@ export const splitGifs = async (data, isLocalStorage ) =>{
   const gifUrls= await toGifUrl(data, isLocalStorage);
 // splits the gifs in the correct cols and makes the html
   gifUrls.forEach((url, index) => {
-    const gifElement = `<div class="gif"><img class='test' src="${url}" alt="Gif"></div>`;
+    const gifElement = `<div class="gif"><img class='test' onload=${incrementLoadedImages()} src="${url}" alt="Gif"></div>`;
     cols[counter].push(gifElement);
     counter = (counter + 1) % 3;
   });
@@ -76,7 +76,7 @@ export const splitGifTest = (data) =>{
   });
   // splits the gifs in the correct cols and makes the html
   Gifs.forEach((url, index) => {
-    const gifElement = `<div class="gif"><img class='test' src="${url}" alt="Gif"></div>`;
+    const gifElement = `<div class="gif"><img class='test' onload=${incrementLoadedImages()} src="${url}" alt="Gif"></div>`;
     cols[counter].push(gifElement);
     counter = (counter + 1) % 3;
   });

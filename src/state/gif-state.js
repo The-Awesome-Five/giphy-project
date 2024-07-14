@@ -35,7 +35,7 @@
 let gifState = [];
 let offset = 15;
 let currOffset = 0;
-
+let loadedImages=0;
 export const populateGifState = (data) => {
 
   const temp = data.map(gif => ({
@@ -55,6 +55,11 @@ export const resetGifState = () => {
   offset = 15;
   currOffset = 0;
 };
+
+export const getLoadedImages= () => loadedImages;
+export const incrementLoadedImages = () => loadedImages++;
+export const resetLoadedImages = () => loadedImages=0;
+
 
 export const getOffset = () => offset;
 export const incrementOffset = () => offset+=45;
