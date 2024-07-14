@@ -44,14 +44,19 @@ export const renderRelatedGifs = async (id) => {
 
 };
 
+// access the json url 
 export const getURL = (data) => {
   return data.images.original.url || '';
 };
 
+
+// works with JSON
 export const splitGifs = async (data, isLocalStorage ) =>{
   let counter = 0;
   const cols = [[], [], []];
+  // function  to get URL from JSON on construct one
   const gifUrls= await toGifUrl(data, isLocalStorage);
+// splits the gifs in the correct cols and makes the html
   gifUrls.forEach((url, index) => {
     const gifElement = `<div class="gif"><img class='test' src="${url}" alt="Gif"></div>`;
     cols[counter].push(gifElement);
@@ -60,14 +65,16 @@ export const splitGifs = async (data, isLocalStorage ) =>{
   return cols;
 };
 
+// works with gif-state, takes the data
 export const splitGifTest = (data) =>{
   console.log(data);
   let counter = 0;
   const cols = [[], [], []];
+  // turns data into gif URLs
   const Gifs = data.map(el=>{
     return `https://media.giphy.com/media/${el.id}/giphy.gif`;
   });
-  console.log(Gifs);
+  // splits the gifs in the correct cols and makes the html
   Gifs.forEach((url, index) => {
     const gifElement = `<div class="gif"><img class='test' src="${url}" alt="Gif"></div>`;
     cols[counter].push(gifElement);
@@ -77,6 +84,7 @@ export const splitGifTest = (data) =>{
   return cols;
 };
 
+// check if it's locally stored gif and if not takes the URL from a JSON file.
 const toGifUrl = async (data, isLocalStorage) => {
   return await Promise.all(data.map(el => isLocalStorage ? `https://media.giphy.com/media/${el}/giphy.gif` : getURL(el)));
 };

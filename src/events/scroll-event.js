@@ -6,6 +6,7 @@ export const handleScroll = async (isTrending = true, searchTerm = '') => {
 
   let gifs = [];
 
+  // check if we have more gifs to load
   if (getOffset() === getCurrOffset()) {
 
     gifs = isTrending ?
@@ -18,10 +19,12 @@ export const handleScroll = async (isTrending = true, searchTerm = '') => {
   // console.log(getOffset());
   const cols = [document.querySelector('#col-0'), document.querySelector('#col-1'), document.querySelector('#col-2')];
 
+  // turn info from Gif-state into gifs.
   let newGifs = getGifState();
   newGifs= newGifs.slice(getCurrOffset(), getCurrOffset() + 15);
   const result = splitGifTest(newGifs);
 
+  // arrange the new gifs in the correct cols, adding them a new div.
   result.forEach((gifsColumn, index) => {
     gifsColumn.forEach(gif => {
       const gifElement = document.createElement('div');
