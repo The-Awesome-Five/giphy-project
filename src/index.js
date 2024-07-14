@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
   document.addEventListener('click', event => {
 
     if (event.target.classList.contains('nav-link')) {
@@ -73,6 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
       resetGifState();
       resetLoadedImages();
       renderSearchGifs(event.target.parentElement.querySelector('#search').value);
+    }
+
+    if (event.target.id === 'menu-icon') {
+      const menu = document.getElementById('container-menu');
+      const icon = document.getElementById('menu-icon');
+      menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
+      icon.style.transform = icon.style.transform === 'rotate(45deg)' ? 'rotate(0deg)' : 'rotate(45deg)';
     }
 
     if (event.target.classList.contains('single-gif')) {

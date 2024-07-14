@@ -39,7 +39,12 @@ header {
     padding: 5px;
 }
 
-.hamburger-menu > a {
+#container-menu {
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.hamburger-menu > #container-menu > a {
     font-size: 25px;
     text-align: left;
 }
