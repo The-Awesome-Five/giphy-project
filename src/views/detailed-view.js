@@ -8,12 +8,19 @@ export const toDetailedView = async (gif) => {
   return `
 <div id="detailed-view">
           <img id="gif-${gif.id}" src=${gif.url} alt="Gif">
-          ${'\n'}
-          <h2> User: ${gif.username ? gif.username : 'Not Specified'}</h2>
-           ${'\n'}
-          <h2> Upload Date: ${gif.date ? gif.date : 'Not Specified'}</h2>
-            ${button};
-            <button id="getURL" url="${gif.url}">Get URL</button>
+            <div id="info-container">
+              <h2> User: ${gif.username ? gif.username : 'Not Specified'}</h2>
+              ${'\n'}
+              <h2> Upload Date: ${gif.date ? gif.date : 'Not Specified'}</h2>
+            </div>
+
+              ${button}
+            
+
+            
+              <button id="getURL" url="${gif.url}">🔗</button>
+            
+        
             </div>
              <div id="container">
              ${await renderRelatedGifs(gif.id)}

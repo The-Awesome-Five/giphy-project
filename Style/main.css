@@ -248,11 +248,69 @@ input[type="file"], input[type="button"] {
     margin-right: 20px;
     box-shadow: 5px 15px 25px rgb(18, 18, 18);
     border-radius: 12px;
-    display: inline-block; /* Уверете се, че елементът е блоков или inline-block */
+    display: inline-block; 
     transition: transform 0.3s ease;
 }
 
 #upload-form > label:hover {
     transform: scale(1.1);
     cursor: pointer;
+}
+
+
+/* DEATAIL GIF PAGE */
+.favorite {
+    font-size: 30px;
+    border: none;
+    border-radius: 10px;
+    padding-bottom: 6px;
+    cursor: pointer;
+    background-color: rgb(179, 179, 179);
+}
+
+.favorite:active {
+    box-shadow: 2px 2px #666;
+    transform: translateY(4px);
+}
+
+.remove {
+    font-size: 30px;
+    border: none;
+    border-radius: 10px;
+    padding-bottom: 6px;
+    cursor: pointer;
+    background-color: #F98E2D;
+}
+
+.remove:active {
+    box-shadow: 2px 2px #666;
+    transform: translateY(4px);
+}
+
+#getURL {
+    font-size: 30px;
+    border: none;
+    border-radius: 10px;
+    padding-bottom: 6px;
+    cursor: pointer;
+    background-color: rgb(179, 179, 179);
+    margin-left: 10px;
+}
+
+#getURL:active {
+    box-shadow: 2px 2px #666;
+    transform: translateY(4px);
+    background-color: #F98E2D;
+}
+
+
+
+#detail-info {
+    margin-left: 25px;
+    margin-top: 30px;
+}
+
+#detailed-view > img {
+    border-radius: 20px;
+    margin-top: 30px;
 }

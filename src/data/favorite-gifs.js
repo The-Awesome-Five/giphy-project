@@ -25,7 +25,7 @@ export const getFavoriteGifs = () => {
 };
 
 export const createFavoriteButton = (flag ) => {
-  return flag ? `<button class='remove'>Remove from Favorite</button>` : `<button class='favorite'>Add to Favorite</button>`;
+  return flag ? `<button class='remove' >👌</button>` : `<button class='favorite'>👌</button>`;
 };
 
 

@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(button);
       const newID= 'remove';
       button.className = newID;
-      button.textContent ='Remove from Favorite';
+      button.textContent ='👌';
       console.log(button);
     } else if (event.target.classList.contains('remove')) {
       const imgID = event.target.closest('div').querySelector('img').id.split('-')[1];
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(button);
       const newID= 'favorite';
       button.className = newID;
-      button.textContent ='Add to Favorite';
+      button.textContent ='👌';
       console.log(button);
     }
 
