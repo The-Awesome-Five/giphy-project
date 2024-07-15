@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (event.target.classList.contains('single-gif')) {
-
       const isFavourite = event.target.id.includes('favourite');
       console.log(isFavourite);
       console.log(event.target.id);
@@ -94,17 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (event.target.classList.contains('favorite')) {
-      addToFavorite();
+      addToFavorite(event);
       console.log('Trigger ADD');
       const button = event.target;
-
       console.log(button);
       const newID= 'remove';
       button.className = newID;
       button.textContent ='👌';
       console.log(button);
     } else if (event.target.classList.contains('remove')) {
-      const imgID = event.target.closest('div').querySelector('img').id.split('-')[1];
+      const imgID = event.target.parentElement.parentElement.querySelector('img').id.split('-')[1];
       removeFromFavorite(imgID);
       console.log('Trigger Remove');
       const button = event.target;

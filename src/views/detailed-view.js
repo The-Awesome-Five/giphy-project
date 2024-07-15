@@ -13,14 +13,8 @@ export const toDetailedView = async (gif) => {
               ${'\n'}
               <h2> Upload Date: ${gif.date ? gif.date : 'Not Specified'}</h2>
             </div>
-
-              ${button}
-            
-
-            
+              <div id="add-remove-btn">${button}</div>
               <button id="getURL" url="${gif.url}">🔗</button>
-            
-        
             </div>
              <div id="container">
              ${await renderRelatedGifs(gif.id)}

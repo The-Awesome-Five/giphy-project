@@ -1,7 +1,9 @@
 let favorite = JSON.parse(localStorage.getItem('favorite')) || [];
 
-export const addToFavorite =() =>{
-  const imgElement = event.target.closest('div').querySelector('img');
+export const addToFavorite = (event) =>{
+
+  console.log(event.target.parentElement.parentElement)
+  const imgElement = event.target.parentElement.parentElement.querySelector('img');
   const imgSrc = imgElement.src;
   const imgSrcParts = imgSrc.split('/');
   if (favorite.includes(imgSrcParts[imgSrcParts.length - 2])) {} else {
