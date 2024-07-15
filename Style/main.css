@@ -78,6 +78,7 @@ header {
 
 #search-btn:hover {
     cursor: pointer;
+    background-color: #a7672c;
 }
 
 #search-btn:active {
@@ -85,11 +86,16 @@ header {
     transform: translateY(4px);
 }
 
+
 #logo {
     margin-right: 20px;
 }
 
 #logo:hover {
+    cursor: pointer;
+}
+
+#menu-icon:hover {
     cursor: pointer;
 }
 
@@ -251,6 +257,7 @@ input[type="file"], input[type="button"] {
     display: inline-block; 
     transition: transform 0.3s ease;
 }
+
 
 #upload-form > label:hover {
     transform: scale(1.1);
