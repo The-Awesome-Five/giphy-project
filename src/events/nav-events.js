@@ -2,7 +2,7 @@ import { ABOUT, FAVORITE, UPLOAD, GIFS, CONTAINER_SELECTOR, UPLOADED } from '../
 import { toAboutView } from '../views/view-about.js';
 import { toGifCategorieView } from '../views/category-view.js';
 import { toUploadView } from '../views/upload-view.js';
-import { getTrendingGifs } from '../requests/giphy-service.js';
+import {getRandomGif, getTrendingGifs} from '../requests/giphy-service.js';
 import { getFavoriteGifs } from '../data/favorite-gifs.js';
 import { getUploadedGifs } from '../data/uploaded-gifs.js';
 import { getGifState, populateGifState } from '../state/gif-state.js';
@@ -34,7 +34,14 @@ export const loadPage = (page = '') => {
 
 
 export const renderFavorite = async () => {
-  document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(getFavoriteGifs(), 'favorite', true, true);
+
+  let gifs = getFavoriteGifs().length === 0 ? [await getRandomGif()] : getFavoriteGifs()
+
+  if (getFavoriteGifs().length === 0) {
+    gifs = [gifs[0].data.id];
+  }
+
+  document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs, 'favorite', true, true);
 };
 
 export const renderUploaded = async () => {

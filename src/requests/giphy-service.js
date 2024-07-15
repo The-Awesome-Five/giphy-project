@@ -10,6 +10,10 @@ export const getTrendingGifs = async (limit = 45, offset = 0) => {
   return request.get(`${API_URL}/trending?api_key=${API_KEY}&limit=${limit}&offset=${offset}`);
 };
 
+export const getRandomGif = async () => {
+  return request.get(`${API_URL}/random?api_key=${API_KEY}`);
+}
+
 export const getGifCategories = async () => {
   return request.get(`${API_URL}/categories?api_key=${API_KEY}`);
 };
