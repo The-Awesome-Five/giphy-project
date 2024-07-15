@@ -23,7 +23,7 @@ export const removeFromFavorite = (id) => {
 
   let favorite = JSON.parse(localStorage.getItem('favorite')) || [];
 
-  favorite= favorite.filter(fav=> fav!==id);
+  favorite= favorite.filter(fav=> fav.id!==id);
 
   localStorage.setItem('favorite', JSON.stringify(favorite));
 };
