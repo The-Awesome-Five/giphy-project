@@ -9,7 +9,6 @@ import { getLoadedImages, resetGifState, resetLoadedImages } from './state/gif-s
 import { handleScroll } from './events/scroll-event.js';
 import { isInFavorite } from './data/favorite-gifs.js';
 import { getGifState } from './state/gif-state.js';
-const counter=0;
 document.addEventListener('DOMContentLoaded', () => {
 
   renderHome();
