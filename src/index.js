@@ -2,12 +2,13 @@ import { loadPage, renderHome } from './events/nav-events.js';
 import { copyUrl, handleUploadEvent } from './events/giphy-events.js';
 import { renderSearchGifs } from './events/search-event.js';
 import { renderDetailedView } from './events/detailed-events.js';
-import { addToFavorite } from './data/favorite-gifs.js';
+import { addToFavorite, getFavoriteGifs } from './data/favorite-gifs.js';
 import { previewImage } from './events/file-event.js';
 import { removeFromFavorite } from './data/favorite-gifs.js';
 import { getLoadedImages, resetGifState, resetLoadedImages } from './state/gif-state.js';
 import { handleScroll } from './events/scroll-event.js';
-import { searchGif } from './requests/giphy-service.js';
+import { isInFavorite } from './data/favorite-gifs.js';
+import { getGifState } from './state/gif-state.js';
 const counter=0;
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -84,12 +85,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (event.target.classList.contains('single-gif')) {
-      const isFavourite = event.target.id.includes('favourite');
+      const isFavourite = isInFavorite(event.target.id.split('-')[1]);
       console.log(isFavourite);
-      console.log(event.target.id);
-      const imgSrc = event.target.src;
-      const imgSrcParts = imgSrc.split('/');
-      renderDetailedView(imgSrcParts[imgSrcParts.length - 2], isFavourite);
+      let gif;
+      if (isFavourite) {
+        const imgId = event.target.id.split('-');
+        console.log(imgId);
+        gif = getFavoriteGifs().find(el=> el.id ===imgId[1]);
+      } else {
+        const imgId = event.target.id.split('-');
+        gif = getGifState().find(el=> el.id ===imgId[1]);
+      }
+      console.log(gif);
+      renderDetailedView(gif, isFavourite);
     }
 
     if (event.target.classList.contains('favorite')) {

@@ -2,7 +2,7 @@ import { getRelatedGifs, uploadGif } from '../requests/giphy-service.js';
 import { addUploadedGif } from '../data/uploaded-gifs.js';
 import { toGifCategorieView } from '../views/category-view.js';
 import {incrementLoadedImages, populateGifState} from '../state/gif-state.js';
-
+import { getGifState } from '../state/gif-state.js';
 const handleUpload = async (file,event) => {
 
   const body = new FormData();
@@ -71,11 +71,12 @@ export const handleUploadEvent = async (event) => {
 export const renderRelatedGifs = async (id) => {
 
   const relatedGifs = await getRelatedGifs(id, 12);
+  console.log('cat');
   console.log(relatedGifs)
   populateGifState(relatedGifs.data);
-  const gifIds = relatedGifs.data.map(el => el.id);
+  // const gifIds = relatedGifs.data.map(el => el.id);
 
-  return toGifCategorieView(gifIds, 'Related', true);
+  return toGifCategorieView(getGifState(), 'Related', true);
 
 };
 
@@ -86,13 +87,12 @@ export const getURL = (data) => {
 
 
 // works with JSON
-export const  splitGifs = async (data, isLocalStorage, isFavourite) =>{
+export const splitGifs = async (data, isLocalStorage, isFavourite) =>{
   let counter = 0;
   const typeOfGif = isFavourite ? 'favourite' : 'gif'
   const cols = [[], [], []];
   // function  to get URL from JSON on construct one
   const gifUrls= await toGifUrl(data, isLocalStorage);
-  console.log(gifUrls)
   // splits the gifs in the correct cols and makes the html
   gifUrls.forEach(({id, url}, index) => {
     const gifElement = `<div class="gif"><img id="${typeOfGif}-${id}" class='single-gif' onload=${incrementLoadedImages()} src="${url}" alt="Gif"></div>`;
@@ -111,12 +111,14 @@ export const splitGifTest = (data) =>{
   const Gifs = data.map(el=>{
     return {
       id: el.id,
-      url: `https://media.giphy.com/media/${el.id}/giphy.gif`
-    }
+      url: `https://media.giphy.com/media/${el.id}/giphy.gif`,
+      date: el.date,
+      username: el.username,
+    };
   });
   // splits the gifs in the correct cols and makes the html
-  Gifs.forEach(({id, url}, index) => {
-    const gifElement = `<div class="gif"><img id="gif-${id}" class='single-gif' onload=${incrementLoadedImages()} src="${url}" alt="Gif"></div>`;
+  Gifs.forEach(({id, url, username, date }, index) => {
+    const gifElement = `<div class="gif"><img id="gif-${id}-${username}" date="${date}" class='single-gif' onload=${incrementLoadedImages()} src="${url}" alt="Gif"></div>`;
     cols[counter].push(gifElement);
     counter = (counter + 1) % 3;
   });

@@ -41,10 +41,12 @@ export const renderFavorite = async () => {
     gifs = [gifs[0].data.id];
   }
 
+
   document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs, 'favorite', true, true);
 };
 
 export const renderUploaded = async () => {
+
   document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(getUploadedGifs(), 'uploaded', true);
 };
 
@@ -64,7 +66,7 @@ export const renderHome = async ()=> {
   // console.log('STATE:')
   // console.log(getGifState())
 
-  document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs.data, 'trending');
+  document.querySelector(CONTAINER_SELECTOR).innerHTML = toGifCategorieView(getGifState(), 'trending');
 };
 
 export const setActiveNav = (page) => {

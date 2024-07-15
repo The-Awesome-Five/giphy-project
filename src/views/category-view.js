@@ -1,7 +1,9 @@
-import { splitGifs } from '../events/giphy-events.js';
+import { splitGifTest } from '../events/giphy-events.js';
 
-export const toGifCategorieView = async (data, name = 'Trending', isLocalStorage = false, isFavourite = false) => {
-  const cols = await splitGifs(data, isLocalStorage, isFavourite);
+export const toGifCategorieView = (data, name = 'Trending', isLocalStorage = false, isFavourite = false) => {
+  console.log(data);
+  const cols = splitGifTest(data, isLocalStorage, isFavourite);
+  console.log(cols);
   return `
     <h1>${name}</h1>
     <div id="container">
