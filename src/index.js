@@ -1,14 +1,12 @@
 import { loadPage, renderHome } from './events/nav-events.js';
-import { copyUrl, handleUploadEvent } from './events/giphy-events.js';
+import { copyUrl } from './events/giphy-events.js';
 import { renderSearchGifs } from './events/search-event.js';
 import { renderDetailedView } from './events/detailed-events.js';
-import { addToFavorite, getFavoriteGifs } from './data/favorite-gifs.js';
 import { previewImage } from './events/file-event.js';
-import { removeFromFavorite } from './data/favorite-gifs.js';
 import { getLoadedImages, resetGifState, resetLoadedImages } from './state/gif-state.js';
 import { handleScroll } from './events/scroll-event.js';
-import { isInFavorite } from './data/favorite-gifs.js';
-import { getGifState } from './state/gif-state.js';
+import { handleUploadEvent } from './events/upload-events.js';
+import { handleAddFavourite, handleRemoveFavourite } from './events/favourite-events.js';
 document.addEventListener('DOMContentLoaded', () => {
 
   renderHome();
@@ -84,40 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (event.target.classList.contains('single-gif')) {
-      const isFavourite = isInFavorite(event.target.id.split('-')[1]);
-      console.log(isFavourite);
-      let gif;
-      if (isFavourite) {
-        const imgId = event.target.id.split('-');
-        console.log(imgId);
-        gif = getFavoriteGifs().find(el=> el.id ===imgId[1]);
-      } else {
-        const imgId = event.target.id.split('-');
-        gif = getGifState().find(el=> el.id ===imgId[1]);
-      }
-      console.log(gif);
-      renderDetailedView(gif, isFavourite);
+      renderDetailedView(event);
     }
 
     if (event.target.classList.contains('favorite')) {
-      addToFavorite(event);
-      console.log('Trigger ADD');
-      const button = event.target;
-      console.log(button);
-      const newID= 'remove';
-      button.className = newID;
-      button.textContent ='👌';
-      console.log(button);
+      handleAddFavourite(event);
     } else if (event.target.classList.contains('remove')) {
-      const imgID = event.target.parentElement.parentElement.querySelector('img').id.split('-')[1];
-      removeFromFavorite(imgID);
-      console.log('Trigger Remove');
-      const button = event.target;
-      console.log(button);
-      const newID= 'favorite';
-      button.className = newID;
-      button.textContent ='👌';
-      console.log(button);
+      handleRemoveFavourite(event);
     }
 
     if (event.target.id.includes('getURL')) {

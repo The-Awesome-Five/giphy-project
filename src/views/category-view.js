@@ -1,9 +1,7 @@
-import { splitGifTest } from '../events/giphy-events.js';
+import { toImgElement } from '../events/giphy-events.js';
 
 export const toGifCategorieView = (data, name = 'Trending', isLocalStorage = false, isFavourite = false) => {
-  console.log(data);
-  const cols = splitGifTest(data, isLocalStorage, isFavourite);
-  console.log(cols);
+  const cols = toImgElement(data, isLocalStorage, isFavourite);
   return `
     <h1>${name}</h1>
     <div id="container">

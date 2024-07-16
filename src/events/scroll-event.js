@@ -1,6 +1,6 @@
 import { getTrendingGifs, searchGif } from '../requests/giphy-service.js';
 import { getCurrOffset, getGifState, getOffset, incrementCurrOffset, incrementOffset, populateGifState } from '../state/gif-state.js';
-import { splitGifTest } from './giphy-events.js';
+import { toImgElement } from './giphy-events.js';
 import { incrementLoadedImages } from '../state/gif-state.js';
 export const handleScroll = async (isTrending = true) => {
 
@@ -28,7 +28,7 @@ export const handleScroll = async (isTrending = true) => {
   // turn info from Gif-state into gifs.
   let newGifs = getGifState();
   newGifs= newGifs.slice(getCurrOffset(), getCurrOffset() + 15);
-  const result = splitGifTest(newGifs);
+  const result = toImgElement(newGifs);
 
   // arrange the new gifs in the correct cols, adding them a new div.
   result.forEach((gifsColumn, index) => {

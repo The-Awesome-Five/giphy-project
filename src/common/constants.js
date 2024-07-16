@@ -7,5 +7,5 @@ export const GIFS= 'gif_home';
 export const UPLOAD= 'upload';
 export const FAVORITE='favorite';
 export const UPLOADED='uploaded';
-export const CATS='cats';
 export const CONTAINER_SELECTOR= '#container';
+export const USERNAME = 'the-volgarian'

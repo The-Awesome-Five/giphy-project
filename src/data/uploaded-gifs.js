@@ -1,12 +1,18 @@
+import { USERNAME } from '../common/constants.js';
+
 const uploaded = JSON.parse(localStorage.getItem('uploaded')) || [];
 
 export const addUploadedGif = (gifId) => {
-  if (uploaded.find(id => id === gifId)) {
-    // Uploaded gif already added to localStorage
-    return;
+
+  const gif = {
+    id: gifId,
+    date: Date.now(),
+    username: USERNAME,
+    url: `https://media.giphy.com/media/${gifId}/giphy.gif`
   }
 
-  uploaded.push(gifId);
+  uploaded.push(gif);
+
   localStorage.setItem('uploaded', JSON.stringify(uploaded));
 };
 

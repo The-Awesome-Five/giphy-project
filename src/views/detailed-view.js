@@ -1,8 +1,7 @@
 import { createFavoriteButton, isInFavorite } from '../data/favorite-gifs.js';
-import { renderRelatedGifs } from '../events/giphy-events.js';
+import { renderRelatedGifs } from './related-gifs-view.js';
 
 export const toDetailedView = async (gif) => {
-  console.log(gif);
   const flag= isInFavorite(gif.id);
   const button= createFavoriteButton(flag);
   return `

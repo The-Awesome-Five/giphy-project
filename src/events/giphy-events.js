@@ -1,89 +1,7 @@
-import { getRelatedGifs, uploadGif } from '../requests/giphy-service.js';
-import { addUploadedGif } from '../data/uploaded-gifs.js';
-import { toGifCategorieView } from '../views/category-view.js';
-import {incrementLoadedImages, populateGifState} from '../state/gif-state.js';
-import { getGifState } from '../state/gif-state.js';
-const handleUpload = async (file,event) => {
-
-  const body = new FormData();
-  body.append('file', file);
-
-  Toastify({
-    text: "The file is uploading right now!",
-    style: {
-      background: "gray",
-    },
-    duration: 3000
-
-  }).showToast();
-
-  return await uploadGif(body);
-};
-
-export const handleUploadEvent = async (event) => {
-
-  event.preventDefault();
-
-  const form = event.target;
-  const button = form.querySelector('button');
-  button.disabled = true;
-
-  const previewImage = document.querySelector('#preview-image');
-
-  const fileInput = form.querySelector('#gif-upload');
-
-  const file = fileInput.files[0];
-  if (file) {
-    try {
-      const response = await handleUpload(file,event);
-
-      if (response.meta.status === 200) {
-        Toastify({
-          text: "The file has been uploaded!",
-          style: {
-            background: "orange",
-          },
-          duration: 3000
-
-        }).showToast();
-        addUploadedGif(response.data.id);
-        button.disabled = false;
-        form.reset();
-        previewImage.remove();
-      }
-    } catch (e) {
-      Toastify({
-        text: `The file was not uploaded: ${e.message}`,
-        style: {
-          background: "red",
-        },
-        duration: 3000
-      }).showToast();
-      button.disabled = false;
-      form.reset();
-      previewImage.remove();
-    }
-  } else {
-    form.querySelector('#gif-upload').innerText = 'Please select a file to upload.';
-  }
-};
-// view's helper function
-export const renderRelatedGifs = async (id) => {
-
-  const relatedGifs = await getRelatedGifs(id, 12);
-  console.log('cat');
-  console.log(relatedGifs)
-  populateGifState(relatedGifs.data);
-  // const gifIds = relatedGifs.data.map(el => el.id);
-
-  return toGifCategorieView(getGifState(), 'Related', true);
-
-};
-
+import {incrementLoadedImages} from '../state/gif-state.js';
 
 // works with gif-state, takes the data
-export const splitGifTest = (data) =>{
-  console.log(data);
+export const toImgElement = (data) =>{
   let counter = 0;
   const cols = [[], [], []];
   // turns data into gif URLs
@@ -106,9 +24,7 @@ export const splitGifTest = (data) =>{
 };
 
 
-
 export const copyUrl = (url) =>{
-  console.log(url);
   const imgSrc = url;
   const tempInput = document.createElement('input');
   tempInput.value = imgSrc;

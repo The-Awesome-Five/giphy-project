@@ -35,14 +35,16 @@ export const loadPage = (page = '') => {
 
 export const renderFavorite = async () => {
 
-  let gifs = getFavoriteGifs().length === 0 ? [await getRandomGif()] : getFavoriteGifs()
+  let gifs = getFavoriteGifs().length === 0 ? await getRandomGif() : getFavoriteGifs()
 
   if (getFavoriteGifs().length === 0) {
-    gifs = [gifs[0].data.id];
+    populateGifState([gifs.data]);
+    gifs = getGifState();
   }
 
-
   document.querySelector(CONTAINER_SELECTOR).innerHTML = await toGifCategorieView(gifs, 'favorite', true, true);
+
+
 };
 
 export const renderUploaded = async () => {
@@ -63,9 +65,6 @@ export const renderHome = async ()=> {
   incrementCurrOffset();
   populateGifState(gifs.data);
 
-  // console.log('STATE:')
-  // console.log(getGifState())
-
   document.querySelector(CONTAINER_SELECTOR).innerHTML = toGifCategorieView(getGifState(), 'trending');
 };
 
@@ -80,3 +79,5 @@ export const setActiveNav = (page) => {
       element.classList.remove('active'),
     );
 };
+
+
