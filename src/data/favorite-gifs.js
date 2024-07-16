@@ -1,22 +1,28 @@
 let favorite = JSON.parse(localStorage.getItem('favorite')) || [];
 
-export const addToFavorite = (event) =>{
-
-  console.log(event.target.parentElement.parentElement)
+export const addToFavorite = (event) => {
   const imgElement = event.target.parentElement.parentElement.querySelector('img');
   const imgSrc = imgElement.src;
-  const imgSrcParts = imgSrc.split('/');
-  if (favorite.includes(imgSrcParts[imgSrcParts.length - 2])) {} else {
-    favorite.push(imgSrcParts[imgSrcParts.length - 2]);
+  const imgDate = imgElement.getAttribute('date');
+  const imgId = imgElement.id.split('-');
+  const gifId = imgId[1];
+  const username = imgId[2];
+  let favorite = JSON.parse(localStorage.getItem('favorite')) || [];
+  if (!favorite.some(fav => fav.id === gifId)) {
+    favorite.push({
+      id: gifId,
+      username: username,
+      date: imgDate,
+      url: imgSrc,
+    });
     localStorage.setItem('favorite', JSON.stringify(favorite));
   }
 };
-
 export const removeFromFavorite = (id) => {
 
   let favorite = JSON.parse(localStorage.getItem('favorite')) || [];
 
-  favorite= favorite.filter(fav=> fav!==id);
+  favorite= favorite.filter(fav=> fav.id!==id);
 
   localStorage.setItem('favorite', JSON.stringify(favorite));
 };
@@ -32,8 +38,5 @@ export const createFavoriteButton = (flag ) => {
 
 
 export const isInFavorite = (id) => {
-  if (favorite.includes(id)) {
-    return true;
-  }
-  return false;
-};
+  return favorite.some(fav => fav.id === id);
+}

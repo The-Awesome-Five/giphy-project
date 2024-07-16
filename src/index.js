@@ -1,14 +1,12 @@
 import { loadPage, renderHome } from './events/nav-events.js';
-import { copyUrl, handleUploadEvent } from './events/giphy-events.js';
+import { copyUrl } from './events/giphy-events.js';
 import { renderSearchGifs } from './events/search-event.js';
 import { renderDetailedView } from './events/detailed-events.js';
-import { addToFavorite } from './data/favorite-gifs.js';
 import { previewImage } from './events/file-event.js';
-import { removeFromFavorite } from './data/favorite-gifs.js';
 import { getLoadedImages, resetGifState, resetLoadedImages } from './state/gif-state.js';
 import { handleScroll } from './events/scroll-event.js';
-import { searchGif } from './requests/giphy-service.js';
-const counter=0;
+import { handleUploadEvent } from './events/upload-events.js';
+import { handleAddFavourite, handleRemoveFavourite } from './events/favourite-events.js';
 document.addEventListener('DOMContentLoaded', () => {
 
   renderHome();
@@ -84,33 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (event.target.classList.contains('single-gif')) {
-      const isFavourite = event.target.id.includes('favourite');
-      console.log(isFavourite);
-      console.log(event.target.id);
-      const imgSrc = event.target.src;
-      const imgSrcParts = imgSrc.split('/');
-      renderDetailedView(imgSrcParts[imgSrcParts.length - 2], isFavourite);
+      renderDetailedView(event);
     }
 
     if (event.target.classList.contains('favorite')) {
-      addToFavorite(event);
-      console.log('Trigger ADD');
-      const button = event.target;
-      console.log(button);
-      const newID= 'remove';
-      button.className = newID;
-      button.textContent ='👌';
-      console.log(button);
+      handleAddFavourite(event);
     } else if (event.target.classList.contains('remove')) {
-      const imgID = event.target.parentElement.parentElement.querySelector('img').id.split('-')[1];
-      removeFromFavorite(imgID);
-      console.log('Trigger Remove');
-      const button = event.target;
-      console.log(button);
-      const newID= 'favorite';
-      button.className = newID;
-      button.textContent ='👌';
-      console.log(button);
+      handleRemoveFavourite(event);
     }
 
     if (event.target.id.includes('getURL')) {

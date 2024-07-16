@@ -21,7 +21,6 @@ const request = async (method, url, data = null, headers = {}, contentType = 'ap
     return await response.json();
 
   } catch (error) {
-    console.log(error.message);
   }
 };
 
