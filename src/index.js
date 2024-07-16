@@ -94,8 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target.id === 'menu-icon') {
       const menu = document.getElementById('container-menu');
       const icon = document.getElementById('menu-icon');
+      
       menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
       icon.style.transform = icon.style.transform === 'rotate(45deg)' ? 'rotate(0deg)' : 'rotate(45deg)';
+      const newSrc = icon.style.transform === 'rotate(45deg)' ? '/img/bucket-icon-glue.png' : '/img/bucket-icon.png';
+      icon.src = newSrc;
     }
 
     if (event.target.classList.contains('single-gif')) {
