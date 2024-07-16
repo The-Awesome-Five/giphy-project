@@ -1,5 +1,5 @@
 import { getRelatedGifs } from '../requests/giphy-service.js';
-import { getGifState, populateGifState } from '../state/gif-state.js';
+import { getGifState, populateGifState, resetGifState } from '../state/gif-state.js';
 import { toGifCategorieView } from './category-view.js';
 
 /**
@@ -9,6 +9,7 @@ import { toGifCategorieView } from './category-view.js';
  */
 export const renderRelatedGifs = async (id) => {
   const relatedGifs = await getRelatedGifs(id, 12);
+  resetGifState();
   populateGifState(relatedGifs.data);
 
   return toGifCategorieView(getGifState(), 'Related', true);
