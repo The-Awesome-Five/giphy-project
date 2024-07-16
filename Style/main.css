@@ -315,13 +315,20 @@ input[type="file"], input[type="button"] {
 }
 
 
+#detail-container {
+    margin-top: 10px;
+    margin-left: 20px;
+}
 
-#detail-info {
-    margin-left: 25px;
-    margin-top: 30px;
+#detailed-view {
+    display: flex;
 }
 
 #detailed-view > img {
     border-radius: 20px;
     margin-top: 30px;
+}
+
+#sun-icon {
+    margin-left: 10px;
 }
