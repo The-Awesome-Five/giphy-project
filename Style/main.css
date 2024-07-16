@@ -327,4 +327,5 @@ input[type="file"], input[type="button"] {
 #detailed-view > img {
     border-radius: 20px;
     margin-top: 30px;
+    max-width: 500px;
 }
