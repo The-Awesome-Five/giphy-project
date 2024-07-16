@@ -1,8 +1,14 @@
 import { uploadGif } from '../requests/giphy-service.js';
 import { addUploadedGif } from '../data/uploaded-gifs.js';
 
-const handleUpload = async (file,event) => {
-
+/**
+ * Handles the upload process for a GIF file.
+ * Displays a toast notification during the upload process.
+ * @param {File} file - The file to be uploaded.
+ * @param {Event} event - The event triggered by the upload action.
+ * @returns {Promise<Object>} A Promise that resolves with the response from the upload service.
+ */
+const handleUpload = async (file, event) => {
   const body = new FormData();
   body.append('file', file);
 
@@ -12,14 +18,17 @@ const handleUpload = async (file,event) => {
       background: "gray",
     },
     duration: 3000
-
   }).showToast();
 
   return await uploadGif(body);
 };
 
+/**
+ * Handles the upload event triggered by a form submission.
+ * Disables the upload button during the upload process, shows notifications, and updates the state with the uploaded GIF.
+ * @param {Event} event - The form submission event.
+ */
 export const handleUploadEvent = async (event) => {
-
   event.preventDefault();
 
   const form = event.target;
@@ -27,13 +36,12 @@ export const handleUploadEvent = async (event) => {
   button.disabled = true;
 
   const previewImage = document.querySelector('#preview-image');
-
   const fileInput = form.querySelector('#gif-upload');
-
   const file = fileInput.files[0];
+
   if (file) {
     try {
-      const response = await handleUpload(file,event);
+      const response = await handleUpload(file, event);
 
       if (response.meta.status === 200) {
         Toastify({
@@ -42,7 +50,6 @@ export const handleUploadEvent = async (event) => {
             background: "orange",
           },
           duration: 3000
-
         }).showToast();
         addUploadedGif(response.data.id);
         button.disabled = false;

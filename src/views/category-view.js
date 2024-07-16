@@ -1,5 +1,13 @@
 import { toImgElement } from '../events/giphy-events.js';
 
+/**
+ * Generates the HTML view for a GIF category.
+ * @param {Array<Object>} data - The array of GIF data objects.
+ * @param {string} [name='Trending'] - The name of the GIF category.
+ * @param {boolean} [isLocalStorage=false] - Flag indicating if the data is from local storage.
+ * @param {boolean} [isFavourite=false] - Flag indicating if the data represents favorite GIFs.
+ * @returns {string} The HTML string for the GIF category view.
+ */
 export const toGifCategorieView = (data, name = 'Trending', isLocalStorage = false, isFavourite = false) => {
   const cols = toImgElement(data, isLocalStorage, isFavourite);
   return `
@@ -15,7 +23,3 @@ export const toGifCategorieView = (data, name = 'Trending', isLocalStorage = fal
     </div>
   `;
 };
-
-// document.querySelector('#col-1')
-// document.querySelector('#col-2').innerHTML = document.querySelector('#col-2').innerHTML +  ${col.join('\n')}
-// document.querySelector('#col-3')

@@ -1,3 +1,7 @@
+/**
+ * Previews the selected image file in an <img> element with the ID 'preview-image'.
+ * @param {Event} event - The event triggered by selecting an image file.
+ */
 export const previewImage = (event) => {
   const file = event.target.files[0];
 
