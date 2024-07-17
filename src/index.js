@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target.id === 'menu-icon') {
       const menu = document.getElementById('container-menu');
       const icon = document.getElementById('menu-icon');
-      
+
       menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
       icon.style.transform = icon.style.transform === 'rotate(45deg)' ? 'rotate(0deg)' : 'rotate(45deg)';
       const newSrc = icon.style.transform === 'rotate(45deg)' ? '/img/bucket-icon-glue.png' : '/img/bucket-icon.png';
@@ -102,6 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (event.target.classList.contains('single-gif')) {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
       renderDetailedView(event);
     }
 
